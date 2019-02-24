@@ -1,0 +1,45 @@
+{
+    "appSettings": {
+      "port": 3000
+    },
+    "codeStatus": {
+      "OK": 200,
+      "CREATED": 201,
+      "ACCEPTED": 202,
+      "BAD_REQUEST": 400,
+      "CONFLICT": 409
+    },
+    "errors": {
+      "INVALID_PARAMETERS": "Invalid parameters.",
+      "SHOULD_BE_ARRAY": "Required fields should be an array.",
+      "MIDDLEWARE_ERROR": "Error during applying middleware.",
+      "REG_ROUTES_ERROR": "Error during routes registration. routes.json must be an array.",
+      "NO_ENDPOINTS_FOUND": "No endpoints found for given configuration.",
+      "CHECK_FORM": "Check the form for errors.",
+      "FORM_NOT_PROCESSED": "Could not process the form."
+    },
+    "loggerParams": {
+      "consoleOutput": true,
+      "consoleOutputLevel": [
+        "DEBUG",
+        "ERROR",
+        "WARNING",
+        "INFO"
+      ],
+      "dateTimeFormat": "DD-MM-YYYY HH:mm",
+      "outputPath": "log/",
+      "fileNameDateFormat": "DD-MM-YYYY",
+      "fileNamePrefix": "product-"
+    },
+    "db": {
+      "HOST": "localhost",
+      "PORT": "27017",
+      "NAME": "Product",
+      "TIMEOUT": "50000"
+    },
+    "dbQueryDefaultParams" : {
+      "pagination" : {
+        "limit": 20
+      }
+    }
+  }

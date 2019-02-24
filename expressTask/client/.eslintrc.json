@@ -1,0 +1,40 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "react/destructuring-assignment": [0, "always"],
+        "linebreak-style": [0, "error", "windows"],
+        "indent": [2, 4],
+        "max-len": [1, 120, 2, {"ignoreComments": true}],
+        "react/jsx-indent-props": [2, 4],
+        "react/jsx-indent": [2, 4],
+        "no-underscore-dangle": "off",
+        "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+        "import/no-unresolved": "off",
+        "import/extensions": [0],
+        "react/prop-types": [0],
+        "react/forbid-prop-types": [0],
+        "jsx-a11y/click-events-have-key-events": [0],
+        "jsx-a11y/no-noninteractive-element-interactions": [0],
+        "jsx-a11y/label-has-for": [ 2, {
+            "required": {
+                "some": [ "nesting", "id" ]
+            }
+        }],
+        "no-plusplus": [0],
+        "react/no-array-index-key": [0],
+        "react/jsx-no-bind": [0],
+        "jsx-a11y/anchor-is-valid": [0],
+        "jsx-a11y/interactive-supports-focus": [0],
+        "func-names": [0],
+        "no-console": [0]
+    },
+    "env": {
+        "browser": true
+    } 
+}

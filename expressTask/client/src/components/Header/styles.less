@@ -1,0 +1,48 @@
+.navbar-default {
+    background-image: none;
+    background-color: rgb(243, 243, 243);
+    position: fixed;
+    width: 100%;
+    height: 56px;
+    border: none;
+    margin: 0;
+    // border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    box-shadow: none;
+}
+
+ .navbar-default .navbar-brand,
+ .navbar-default .navbar-nav>li>a {
+    color: rgb(180, 26, 26);
+}
+
+.navbar-default .navbar-nav>.active>a {
+    height: 55px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 100%;
+        height: 10%;
+    }
+  
+    .navbar-brand,
+    .navbar-nav>li>a {
+        font-size: 23px;
+        
+    }
+   
+    .navbar-brand {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+    }
+
+    .navbar>.container .navbar-brand, 
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: 15px;
+        position: relative;
+        top: 1px;
+    }
+}
+ 

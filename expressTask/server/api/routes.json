@@ -1,0 +1,38 @@
+[
+    {
+      "method": "post",
+      "url": "/product",
+      "controller": "productController",
+      "action": "create"
+    },
+    {
+      "method": "post",
+      "url": "/product/filter",
+      "controller": "productController",
+      "action": "filter"
+    },
+    {
+      "method": "get",
+      "url": "/product",
+      "controller": "productController",
+      "action": "getAll"
+    },
+    {
+      "method": "put",
+      "url": "/product",
+      "controller": "productController",
+      "action": "update"
+    },
+    {
+      "method": "delete",
+      "url": "/product/:id",
+      "controller": "productController",
+      "action": "delete"
+    },
+    {
+      "method": "get",
+      "url": "/product/:id",
+      "controller": "productController",
+      "action": "getOne"
+    }
+  ]
