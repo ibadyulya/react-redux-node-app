@@ -137,7 +137,7 @@ export default class CreateForm extends React.Component {
                             <FormErrors formErrors={this.state.formErrors} />
                         </Alert>
                     ) : ''}
-                <Button>
+                <Button onSubmit={this.handleSubmit}>
                     {'Create'}
                 </Button>
                 <LinkContainer to="/">

@@ -1,15 +1,15 @@
-import actionConstants from './actionConstants';
+import ACTION_TYPES from '../constants/action-types';
 
 function success(message) {
-    return { type: actionConstants.SUCCESS, message };
+    return { type: ACTION_TYPES.ALERT_SUCCESS, message };
 }
 
 function error(message) {
-    return { type: actionConstants.ERROR, message };
+    return { type: ACTION_TYPES.ALERT_ERROR, message };
 }
 
 function clear() {
-    return { type: actionConstants.CLEAR };
+    return { type: ACTION_TYPES.ALERT_CLEAR };
 }
 
 const alertActions = {

@@ -4,9 +4,11 @@
     "plugins": [
         "react",
         "jsx-a11y",
-        "import"
+        "import",
+        "prettier"
     ],
     "rules": {
+        "import/no-unresolved": "off",
         "react/destructuring-assignment": [0, "always"],
         "linebreak-style": [0, "error", "windows"],
         "indent": [2, 4],
@@ -15,8 +17,8 @@
         "react/jsx-indent": [2, 4],
         "no-underscore-dangle": "off",
         "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
-        "import/no-unresolved": "off",
         "import/extensions": [0],
+        "import/prefer-default-export": "off",
         "react/prop-types": [0],
         "react/forbid-prop-types": [0],
         "jsx-a11y/click-events-have-key-events": [0],
@@ -32,7 +34,16 @@
         "jsx-a11y/anchor-is-valid": [0],
         "jsx-a11y/interactive-supports-focus": [0],
         "func-names": [0],
-        "no-console": [0]
+        "no-console": [0],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ]
     },
     "env": {
         "browser": true

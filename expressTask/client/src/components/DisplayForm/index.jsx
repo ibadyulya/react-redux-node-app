@@ -48,7 +48,7 @@ export default class DisplayForm extends React.Component {
             <div className="display-form">
                 {this.renderDisplayForm(product)}
                 <FormGroup className="display-form-buttons">
-                    <LinkContainer to={`/edit/${match.params.number}`}>
+                    <LinkContainer to={`/edit/${match.params.number}/`}>
                         <Button>
                             {'Edit'}
                         </Button>

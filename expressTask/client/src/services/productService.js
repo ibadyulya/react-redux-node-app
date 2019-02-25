@@ -21,7 +21,7 @@ function createProduct(entity) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entity),
     };
-    return fetch(`${config.serverURL}/api/product`, requestOptions).then(handleResponse);
+    return fetch(`${config.serverURL}/api/product/`, requestOptions).then(handleResponse);
 }
 
 function displayProduct(entityID) {
@@ -39,7 +39,7 @@ function displayProductsList() {
         headers: { 'Content-Type': 'application/json' },
     };
 
-    return fetch(`${config.serverURL}/api/product`, requestOptions).then(handleResponse);
+    return fetch(`${config.serverURL}/api/product/`, requestOptions).then(handleResponse);
 }
 
 function updateProduct(entity) {
@@ -48,7 +48,7 @@ function updateProduct(entity) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entity),
     };
-    return fetch(`${config.serverURL}/api/product`, requestOptions).then(handleResponse);
+    return fetch(`${config.serverURL}/api/product/`, requestOptions).then(handleResponse);
 }
 
 function deleteProduct(id) {
@@ -57,7 +57,7 @@ function deleteProduct(id) {
         headers: { 'Content-Type': 'application/json' },
     };
 
-    return fetch(`${config.serverURL}/api/product/${id}`, requestOptions).then(handleResponse);
+    return fetch(`${config.serverURL}/api/product/${id}/`, requestOptions).then(handleResponse);
 }
 
 function searchProduct(id) {
@@ -65,7 +65,7 @@ function searchProduct(id) {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     };
-    return fetch(`${config.serverURL}/api/product/${id}`, requestOptions).then(handleResponse);
+    return fetch(`${config.serverURL}/api/product/${id}/`, requestOptions).then(handleResponse);
 }
 
 function filterList(value) {
@@ -75,7 +75,7 @@ function filterList(value) {
         body: JSON.stringify({ value }),
     };
     console.log(requestOptions.body);
-    return fetch(`${config.serverURL}/api/product/filter`, requestOptions).then(handleResponse);
+    return fetch(`${config.serverURL}/api/product/filter/`, requestOptions).then(handleResponse);
 }
 
 const productService = {
