@@ -1,207 +1,114 @@
-import productService from '../services/productService';
-import alertActions from './alertActions';
+import ProductApi from '../api/productApi';
 import ACTION_TYPES from '../constants/action-types';
+import ACTION_STATES from './actionStates';
 
-function createProduct(entity) {
-    function request(e) {
-        return {
-            type: ACTION_TYPES.PRODUCT_CREATE_REQUEST,
-            e,
-        };
+export const createProduct = entity => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_CREATE_REQUEST));
+
+    try {
+        const resData = await ProductApi.createProduct(entity);
+
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_CREATE_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_CREATE_FAILURE, error));
     }
-    function success() {
-        return {
-            type: ACTION_TYPES.PRODUCT_CREATE_SUCCESS,
-        };
+};
+
+export const displayProduct = entityID => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DISPLAY_REQUEST));
+
+    try {
+        const resData = await ProductApi.displayProduct(entityID);
+
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DISPLAY_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DISPLAY_FAILURE, error));
     }
-    function failure(error) {
-        return {
-            type: ACTION_TYPES.PRODUCT_CREATE_FAILURE,
-            error,
-        };
+};
+
+export const displayProductsList = () => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DISPLAY_LIST_REQUEST));
+
+    try {
+        const resData = await ProductApi.displayProductsList();
+
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DISPLAY_LIST_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DISPLAY_LIST_FAILURE, error));
     }
-    return (dispatch) => {
-        dispatch(request(entity));
+};
 
-        productService.createProduct(entity)
-            .then(
-                (e) => {
-                    dispatch(success(e));
-                    dispatch(alertActions.success('Survey creation is successful'));
-                },
-                (error) => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                },
-            );
-    };
-}
+export const updateProduct = entity => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_UPDATE_REQUEST));
 
-function displayProduct(entityID) {
-    function request(id) { return { type: ACTION_TYPES.PRODUCT_DISPLAY_REQUEST, id }; }
-    function success(entity) { return { type: ACTION_TYPES.PRODUCT_DISPLAY_SUCCESS, entity }; }
-    function failure(id, error) { return { type: ACTION_TYPES.PRODUCT_DISPLAY_FAILURE, id, error }; }
+    try {
+        const resData = await ProductApi.updateProduct(entity);
 
-    return (dispatch) => {
-        dispatch(request(entityID));
-
-        productService.displayProduct(entityID)
-            .then(
-                (e) => {
-                    dispatch(success(e));
-                },
-                (error) => {
-                    dispatch(failure(entityID, error));
-                },
-            );
-    };
-}
-
-function displayProductsList() {
-    function request() { return { type: ACTION_TYPES.PRODUCT_DISPLAY_LIST_REQUEST }; }
-    function success(entity) { return { type: ACTION_TYPES.PRODUCT_DISPLAY_LIST_SUCCESS, entity }; }
-    function failure(error) { return { type: ACTION_TYPES.PRODUCT_DISPLAY_LIST_FAILURE, error }; }
-
-    return (dispatch) => {
-        dispatch(request());
-
-        productService.displayProductsList()
-            .then(
-                (e) => {
-                    dispatch(success(e));
-                },
-                (error) => {
-                    dispatch(failure(error));
-                },
-            );
-    };
-}
-
-function updateProduct(entity) {
-    function request() {
-        return {
-            type: ACTION_TYPES.PRODUCT_UPDATE_REQUEST,
-        };
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_UPDATE_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_UPDATE_FAILURE, error));
     }
-    function success() {
-        return {
-            type: ACTION_TYPES.PRODUCT_UPDATE_SUCCESS,
-        };
+};
+
+export const deleteProduct = entityID => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DELETE_REQUEST));
+
+    try {
+        const resData = await ProductApi.deleteProduct(entityID);
+
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DELETE_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DELETE_FAILURE, error));
     }
-    function failure(error) {
-        return {
-            type: ACTION_TYPES.PRODUCT_UPDATE_FAILURE,
-            error,
-        };
+};
+
+export const searchProduct = entityID => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_SEARCH_REQUEST));
+
+    try {
+        const resData = await ProductApi.searchProduct(entityID);
+
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_SEARCH_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_SEARCH_FAILURE, error));
     }
-    return (dispatch) => {
-        dispatch(request(entity));
+};
 
-        productService.updateProduct(entity)
-            .then(
-                (sTitle, sQuestions) => {
-                    dispatch(success(sTitle, sQuestions));
-                    dispatch(alertActions.success('Product update is successful'));
-                },
-                (error) => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                },
-            );
-    };
-}
+export const filterList = value => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_FILTER_REQUEST));
 
-function deleteProduct(entityID) {
-    function request(id) { return { type: ACTION_TYPES.PRODUCT_DELETE_REQUEST, id }; }
-    function success(id) { return { type: ACTION_TYPES.PRODUCT_DELETE_SUCCESS, id }; }
-    function failure(id, error) { return { type: ACTION_TYPES.PRODUCT_DELETE_FAILURE, id, error }; }
+    try {
+        const resData = await ProductApi.filterList(value);
 
-    return (dispatch) => {
-        dispatch(request(entityID));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_FILTER_SUCCESS, resData));
+    } catch (error) {
+        console.error(error);
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_FILTER_FAILURE, error));
+    }
+};
 
-        productService.deleteProduct(entityID)
-            .then(
-                () => {
-                    dispatch(success(entityID));
-                },
-                (error) => {
-                    dispatch(failure(entityID, error));
-                },
-            );
-    };
-}
-
-function searchProduct(entityID) {
-    function request() { return { type: ACTION_TYPES.PRODUCT_SEARCH_REQUEST }; }
-    function success(foundProduct) { return { type: ACTION_TYPES.PRODUCT_SEARCH_SUCCESS, foundProduct }; }
-    function failure(id, error) { return { type: ACTION_TYPES.PRODUCT_SEARCH_FAILURE, id, error }; }
-
-    return (dispatch) => {
-        dispatch(request(entityID));
-
-        productService.searchProduct(entityID)
-            .then(
-                (foundProduct) => {
-                    dispatch(success(foundProduct));
-                },
-                (error) => {
-                    dispatch(failure(entityID, error));
-                },
-            );
-    };
-}
-
-function filterList(value) {
-    function request() { return { type: ACTION_TYPES.PRODUCT_FILTER_REQUEST }; }
-    function success(foundProducts) { return { type: ACTION_TYPES.PRODUCT_FILTER_SUCCESS, foundProducts }; }
-    function failure(error) { return { type: ACTION_TYPES.PRODUCT_FILTER_FAILURE, error }; }
-
-    return (dispatch) => {
-        dispatch(request());
-
-        productService.filterList(value)
-            .then(
-                (foundProducts) => {
-                    dispatch(success(foundProducts));
-                },
-                (error) => {
-                    dispatch(failure(error));
-                },
-            );
-    };
-}
-
-function storeFilteredList(entity) {
+export function storeFilteredList(entity) {
     return { type: ACTION_TYPES.STORE_FILTERED_PRODUCTS, entity };
 }
-function foundFlagReset() {
+
+export function foundFlagReset() {
     return { type: ACTION_TYPES.FOUND_FLAG_RESET };
 }
 
-function createdFlagReset() {
+export function createdFlagReset() {
     return { type: ACTION_TYPES.CREATED_FLAG_RESET };
 }
 
-function updatedFlagReset() {
+export function updatedFlagReset() {
     return { type: ACTION_TYPES.UPDATED_FLAG_RESET };
 }
 
-function editedFlagReset() {
+export function editedFlagReset() {
     return { type: ACTION_TYPES.DELETED_FLAG_RESET };
 }
-const productActions = {
-    createProduct,
-    displayProduct,
-    displayProductsList,
-    updateProduct,
-    deleteProduct,
-    searchProduct,
-    storeFilteredList,
-    foundFlagReset,
-    filterList,
-    createdFlagReset,
-    updatedFlagReset,
-    editedFlagReset,
-};
-
-export default productActions;

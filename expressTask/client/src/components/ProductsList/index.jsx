@@ -7,7 +7,7 @@ import {
 import './styles.less';
 
 class ProductsList extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.getProduct();
     }
 

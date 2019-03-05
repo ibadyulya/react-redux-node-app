@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import productActions from '../actions/productActions';
+import { createProduct, createdFlagReset } from '../actions/productActions';
 
 import CreateForm from '../components/CreateForm';
 
@@ -13,10 +13,10 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => ({
     createProduct: entity => dispatch(
-        productActions.createProduct(entity),
+        createProduct(entity),
     ),
     createdFlagReset: () => dispatch(
-        productActions.createdFlagReset(),
+        createdFlagReset(),
     ),
 });
 

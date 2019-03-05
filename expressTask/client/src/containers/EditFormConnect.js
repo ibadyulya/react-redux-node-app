@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import productActions from '../actions/productActions';
+
+import {
+    searchProduct, updateProduct, foundFlagReset, createdFlagReset,
+} from '../actions/productActions';
 
 import EditForm from '../components/EditForm';
 
@@ -18,19 +21,19 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => ({
     searchProduct: id => dispatch(
-        productActions.searchProduct(id),
+        searchProduct(id),
     ),
     updateProduct: entity => dispatch(
-        productActions.updateProduct(entity),
+        updateProduct(entity),
     ),
     foundFlagReset: () => dispatch(
-        productActions.foundFlagReset(),
+        foundFlagReset(),
     ),
     updatedFlagReset: () => dispatch(
-        productActions.createdFlagReset(),
+        createdFlagReset(),
     ),
     deletedFlagReset: () => dispatch(
-        productActions.createdFlagReset(),
+        createdFlagReset(),
     ),
 });
 

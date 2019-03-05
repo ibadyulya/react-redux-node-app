@@ -23,7 +23,7 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_CREATE_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // Display product
     case ACTION_TYPES.PRODUCT_DISPLAY_REQUEST:
@@ -34,33 +34,33 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_DISPLAY_SUCCESS:
         return {
             ...initialState,
-            product: action.entity,
+            product: action.payload,
             productExtracting: false,
             productExtracted: true,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // Display products list
     case ACTION_TYPES.PRODUCT_DISPLAY_LIST_REQUEST:
         return {
             ...initialState,
-            productsList: action.entity,
+            productsList: action.payload,
             listExtracting: true,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_LIST_SUCCESS:
         return {
             ...initialState,
-            productsList: action.entity,
+            productsList: action.payload,
             listExtracting: false,
             listExtracted: true,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_LIST_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // Searching
     case ACTION_TYPES.PRODUCT_SEARCH_REQUEST:
@@ -78,7 +78,7 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_SEARCH_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // Updating
     case ACTION_TYPES.PRODUCT_UPDATE_REQUEST:
@@ -95,7 +95,7 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_UPDATE_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // Deleting
     case ACTION_TYPES.PRODUCT_DELETE_REQUEST:
@@ -112,7 +112,7 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_DELETE_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // filter products
     case ACTION_TYPES.PRODUCT_FILTER_REQUEST:
@@ -130,7 +130,7 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_FILTER_FAILURE:
         return {
             ...initialState,
-            error: action.error,
+            error: action.message,
         };
     // Flags reset;
     case ACTION_TYPES.FOUND_FLAG_RESET:
