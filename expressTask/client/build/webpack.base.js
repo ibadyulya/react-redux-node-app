@@ -1,6 +1,6 @@
-const config = require('../config');
 const path = require('path');
 const webpack = require('webpack');
+const config = require('../config');
 
 function resolve(dir) {
     return path.join(__dirname, dir);
@@ -32,8 +32,10 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
-                    presets: ['env', 'stage-0', 'react'],
-                    plugins: ['react-hot-loader/babel'],
+                    presets: ['env', 'stage-0', 'react', 'es2017'],
+                    plugins: ['react-hot-loader/babel', ['transform-runtime', {
+                        regenerator: true,
+                    }]],
                 },
             },
             {
