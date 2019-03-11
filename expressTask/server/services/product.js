@@ -37,13 +37,15 @@ class ProductService extends BaseService {
             throw Error('User object shouldn\'t be empty');
         }
         const result = await super.getAll();
+
         let filteringList = [...result.docs];
+    
         filteringList = filteringList.filter(
-            item => ((item.name.toLowerCase().search(value.value) !== -1)
-                || (item.category.toLowerCase().search(value.value)) !== -1),
+            item => ((item.name.toLowerCase().search(value.filteringValue) !== -1)
+                || (item.category.toLowerCase().search(value.filteringValue)) !== -1),
         );
         result.docs = [...filteringList];
-        debug(result);
+        // debug(result);
         return result;
     }
 

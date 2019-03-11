@@ -44,7 +44,7 @@ export default function productOperations(state = initialState, action) {
             error: action.message,
         };
     // Display products list
-    case ACTION_TYPES.PRODUCT_DISPLAY_LIST_REQUEST:
+    case ACTION_TYPES.PRODUCT_LIST_DISPLAY_REQUEST:
         return {
             ...initialState,
             productsList: action.payload,
@@ -123,7 +123,7 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.PRODUCT_FILTER_SUCCESS:
         return {
             ...initialState,
-            productsList: action.foundProducts,
+            productsList: action.payload,
             filtering: false,
             filtered: true,
         };

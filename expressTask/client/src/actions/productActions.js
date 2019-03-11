@@ -29,7 +29,7 @@ export const displayProduct = entityID => async (dispatch) => {
 };
 
 export const displayProductsList = () => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DISPLAY_LIST_REQUEST));
+    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_LIST_DISPLAY_REQUEST));
 
     try {
         const resData = await ProductApi.displayProductsList();
