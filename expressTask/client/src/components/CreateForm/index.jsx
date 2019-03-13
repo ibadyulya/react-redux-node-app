@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-update-set-state */
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
@@ -10,6 +11,7 @@ import {
 import { Alert } from 'react-bootstrap';
 
 import FormErrors from '../FormErrors';
+import { LOADING_STATUSES } from '../../constants/index';
 import './styles.less';
 
 export default class CreateForm extends React.Component {
@@ -27,10 +29,38 @@ export default class CreateForm extends React.Component {
         };
     }
 
-    componentDidUpdate() {
-        if (this.props.created) {
+    componentDidMount() {
+        const {
+            match, searchProduct,
+        } = this.props;
+
+        // eslint-disable-next-line no-unused-expressions
+        match.params.number && searchProduct(match.params.number);
+    }
+
+    componentDidUpdate(prevProps) {
+        const {
+            product: {
+                name, category, price, _id,
+            },
+            loadingProductSearch,
+            loadingProductCreate,
+        } = this.props;
+
+        if (loadingProductSearch === LOADING_STATUSES.VALID
+            && prevProps.loadingProductSearch === LOADING_STATUSES.LOADING) {
+            this.setState({
+                product: {
+                    _id,
+                    name,
+                    category,
+                    price,
+                },
+            });
+        }
+
+        if (loadingProductCreate === LOADING_STATUSES.VALID) {
             this.props.history.push('/');
-            this.props.createdFlagReset();
         }
     }
 
@@ -48,14 +78,18 @@ export default class CreateForm extends React.Component {
 
     handleSubmit = () => {
         const { product, formErrors } = this.state;
+        const { match, updateProduct, createProduct } = this.props;
         if (!formErrors.length) {
-            this.props.createProduct(product);
+            if (match.params.number) {
+                updateProduct(product);
+            } else {
+                createProduct(product);
+            }
         }
     }
 
     validateField(fieldName, value) {
         let fieldValidationErrors = [];
-        console.log(`validateField: fieldName: ${fieldName}, value: ${value}`);
 
         switch (fieldName) {
         case 'name':
@@ -76,22 +110,23 @@ export default class CreateForm extends React.Component {
         default:
             break;
         }
-        console.log('formErrors');
-        console.log(fieldValidationErrors);
+
         this.setState({
             formErrors: fieldValidationErrors,
         });
     }
 
     render() {
-        const { formValid } = this.state;
+        const { formErrors, product } = this.state;
+        const { match } = this.props;
+
         return (
             <Form className="create-edit-form" onSubmit={this.handleSubmit}>
                 <FormGroup>
                     <Input
                         id="name"
                         placeholder="fill a product name"
-                        value={this.state.product.name}
+                        value={product.name}
                         onChange={this.handleChange}
                         required
                     />
@@ -126,19 +161,19 @@ export default class CreateForm extends React.Component {
                     <Input
                         id="price"
                         placeholder="fill a product price"
-                        value={this.state.product.price}
+                        value={product.price}
                         onChange={this.handleChange}
                         required
                     />
                 </FormGroup>
-                {!formValid
+                {formErrors.length
                     ? (
                         <Alert bsStyle="danger">
                             <FormErrors formErrors={this.state.formErrors} />
                         </Alert>
                     ) : ''}
                 <Button onSubmit={this.handleSubmit}>
-                    {'Create'}
+                    { match.params.number ? 'Edit' : 'Create' }
                 </Button>
                 <LinkContainer to="/">
                     <Button type="submit">

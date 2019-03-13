@@ -1,159 +1,141 @@
 import ACTION_TYPES from '../constants/action-types';
+import { LOADING_STATUSES } from '../constants/index';
 
 const initialState = {
     productsList: '',
-    product: '',
+    product: [],
     foundProduct: null,
+    loadingProductCreate: LOADING_STATUSES.NONE,
+    loadingProductDisplay: LOADING_STATUSES.NONE,
+    loadingProductListDisplay: LOADING_STATUSES.NONE,
+    loadingProductSearch: LOADING_STATUSES.NONE,
+    loadingProductUpdate: LOADING_STATUSES.NONE,
+    loadingProductFilter: LOADING_STATUSES.NONE,
+    loadingProductDelete: LOADING_STATUSES.NONE,
 };
 
 export default function productOperations(state = initialState, action) {
     switch (action.type) {
-    // Creating
     case ACTION_TYPES.PRODUCT_CREATE_REQUEST:
         return {
             ...initialState,
-            creating: true,
+            loadingProductCreate: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_CREATE_SUCCESS:
         return {
             ...initialState,
-            creating: false,
-            created: true,
+            loadingProductCreate: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_CREATE_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductCreate: LOADING_STATUSES.INVALID,
         };
-    // Display product
     case ACTION_TYPES.PRODUCT_DISPLAY_REQUEST:
         return {
             ...initialState,
-            productExtracting: true,
+            loadingProductDisplay: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_SUCCESS:
         return {
             ...initialState,
             product: action.payload,
-            productExtracting: false,
-            productExtracted: true,
+            loadingProductDisplay: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductDisplay: LOADING_STATUSES.INVALID,
         };
-    // Display products list
     case ACTION_TYPES.PRODUCT_LIST_DISPLAY_REQUEST:
         return {
             ...initialState,
             productsList: action.payload,
-            listExtracting: true,
+            loadingProductListDisplay: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_LIST_SUCCESS:
         return {
             ...initialState,
             productsList: action.payload,
-            listExtracting: false,
-            listExtracted: true,
+            loadingProductListDisplay: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_DISPLAY_LIST_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductListDisplay: LOADING_STATUSES.INVALID,
         };
-    // Searching
     case ACTION_TYPES.PRODUCT_SEARCH_REQUEST:
         return {
             ...initialState,
-            searching: true,
+            loadingProductSearch: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_SEARCH_SUCCESS:
         return {
             ...initialState,
-            foundProduct: action.foundProduct,
-            searching: false,
-            found: true,
+            product: action.payload,
+            loadingProductSearch: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_SEARCH_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductSearch: LOADING_STATUSES.INVALID,
         };
     // Updating
     case ACTION_TYPES.PRODUCT_UPDATE_REQUEST:
         return {
             ...initialState,
-            updating: true,
+            loadingProductUpdate: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_UPDATE_SUCCESS:
         return {
             ...initialState,
-            updating: false,
-            updated: true,
+            loadingProductUpdate: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_UPDATE_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductUpdate: LOADING_STATUSES.INVALID,
         };
     // Deleting
     case ACTION_TYPES.PRODUCT_DELETE_REQUEST:
         return {
             ...initialState,
-            deleting: true,
+            loadingProductDelete: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_DELETE_SUCCESS:
         return {
             ...initialState,
-            deleting: false,
-            deleted: true,
+            loadingProductDelete: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_DELETE_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductDelete: LOADING_STATUSES.INVALID,
         };
     // filter products
     case ACTION_TYPES.PRODUCT_FILTER_REQUEST:
         return {
             ...initialState,
-            filtering: true,
+            loadingProductFilter: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.PRODUCT_FILTER_SUCCESS:
         return {
             ...initialState,
             productsList: action.payload,
-            filtering: false,
-            filtered: true,
+            loadingProductFilter: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.PRODUCT_FILTER_FAILURE:
         return {
             ...initialState,
             error: action.message,
+            loadingProductFilter: LOADING_STATUSES.INVALID,
         };
-    // Flags reset;
-    case ACTION_TYPES.FOUND_FLAG_RESET:
-        return {
-            ...initialState,
-            found: false,
-        };
-    case ACTION_TYPES.CREATED_FLAG_RESET:
-        return {
-            ...initialState,
-            created: false,
-        };
-    case ACTION_TYPES.DELETED_FLAG_RESET:
-        return {
-            ...initialState,
-            deleted: false,
-        };
-    case ACTION_TYPES.UPDATED_FLAG_RESET:
-        return {
-            ...initialState,
-            updated: false,
-        };
-
     default:
         return state;
     }

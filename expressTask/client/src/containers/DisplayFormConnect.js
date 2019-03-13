@@ -4,16 +4,16 @@ import { displayProduct, updateProduct, deleteProduct } from '../actions/product
 import DisplayForm from '../components/DisplayForm';
 
 function mapStateToProps(state) {
-    const { product, deleted } = state.productOperations;
+    const { product, loadingProductDelete } = state.productOperations;
     return {
         product: {
-            id: (product && product[0] && product[0]._id) || '',
-            name: (product && product[0] && product[0].name) || '',
-            category: (product && product[0] && product[0].category) || '',
-            price: (product && product[0] && product[0].price) || '',
-            data: (product && product[0] && product[0].created) || '',
+            id: product ? product._id : null,
+            name: product ? product.name : null,
+            category: product ? product.category : null,
+            price: product ? product.price : null,
+            data: product ? product.created : null,
         },
-        deleted,
+        loadingProductDelete,
     };
 }
 

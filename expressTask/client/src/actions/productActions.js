@@ -92,23 +92,3 @@ export const filterList = value => async (dispatch) => {
         dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_FILTER_FAILURE, error));
     }
 };
-
-export function storeFilteredList(entity) {
-    return { type: ACTION_TYPES.STORE_FILTERED_PRODUCTS, entity };
-}
-
-export function foundFlagReset() {
-    return { type: ACTION_TYPES.FOUND_FLAG_RESET };
-}
-
-export function createdFlagReset() {
-    return { type: ACTION_TYPES.CREATED_FLAG_RESET };
-}
-
-export function updatedFlagReset() {
-    return { type: ACTION_TYPES.UPDATED_FLAG_RESET };
-}
-
-export function editedFlagReset() {
-    return { type: ACTION_TYPES.DELETED_FLAG_RESET };
-}

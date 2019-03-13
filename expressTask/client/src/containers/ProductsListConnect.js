@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { displayProductsList, storeFilteredList, filterList } from '../actions/productActions';
+import { displayProductsList, filterList } from '../actions/productActions';
 
 import ProductsList from '../components/ProductsList';
 
@@ -16,9 +16,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => ({
     getProduct: () => dispatch(
         displayProductsList(),
-    ),
-    storeFilteredList: updatedList => dispatch(
-        storeFilteredList(updatedList),
     ),
     filterList: filteringValue => dispatch(
         filterList(filteringValue),

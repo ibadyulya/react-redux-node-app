@@ -15,7 +15,10 @@ class ProductRepository extends BaseRepository {
             const errorMessage = `${config.get('errors.INVALID_OBJECT_ID')}, id : ${id}`;
             throw Error(errorMessage);
         }
-        return this.model.find({ _id: id });
+
+        const extractedData = await this.model.find({ _id: id });
+
+        return extractedData[0];
     }
 
     async getAllById(id) {

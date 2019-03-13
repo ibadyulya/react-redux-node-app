@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
-import { createProduct, createdFlagReset } from '../actions/productActions';
+import { createProduct, searchProduct, updateProduct } from '../actions/productActions';
 
 import CreateForm from '../components/CreateForm';
 
 function mapStateToProps(state) {
-    const { created } = state.productOperations;
+    const { loadingProductCreate, loadingProductSearch, product } = state.productOperations;
     return {
-        created,
+        loadingProductCreate,
+        loadingProductSearch,
+        product,
     };
 }
 
@@ -15,8 +17,11 @@ const mapDispatchToProps = dispatch => ({
     createProduct: entity => dispatch(
         createProduct(entity),
     ),
-    createdFlagReset: () => dispatch(
-        createdFlagReset(),
+    searchProduct: id => dispatch(
+        searchProduct(id),
+    ),
+    updateProduct: entity => dispatch(
+        updateProduct(entity),
     ),
 });
 

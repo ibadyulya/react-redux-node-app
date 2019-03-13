@@ -47,25 +47,22 @@ class ProductController extends BaseController {
     }
 
     async filter(req, res) {
-        // debug(req.params.id);
-        // debug(req.body);
         this.logger.info('filtering products list');
         const result = await this.service.filter(req.body);
-        // debug(result);
+        debug(result);
         res.status(config.codeStatus.OK).json(result);
     }
 
     async getOne(req, res) {
         const productID = req.params.id;
         this.logger.info('product by id reading');
-        debug(`productID: ${productID}`);
         const result = await this.service.getOne(productID);
         debug(result);
         res.status(config.codeStatus.OK).json(result);
     }
 
     async delete(req, res) {
-        // debug(req.params.id);
+        debug(req.params.id);
         this.logger.info('deleteSurvey');
         const result = await this.service.delete(req.params.id);
         // debug(result);

@@ -4,20 +4,30 @@ import {
     Button, FormGroup,
 } from 'reactstrap';
 
+
+import { LOADING_STATUSES } from '../../constants/index';
+
 import './styles.less';
 
 export default class DisplayForm extends React.Component {
-    componentWillMount() {
-        this.props.getProduct(this.props.match.params.number);
+    componentDidMount() {
+        const { getProduct, match } = this.props;
+        getProduct(match.params.number);
     }
 
     componentDidUpdate() {
-        if (this.props.deleted) {
+        const { loadingProductDelete } = this.props;
+
+        if (loadingProductDelete === LOADING_STATUSES.VALID) {
             this.props.history.push('/');
         }
     }
 
-    handleOnClick = id => this.props.deleteProduct(id);
+    handleOnClick = () => {
+        const { deleteProduct, product } = this.props;
+
+        deleteProduct(product.id);
+    }
 
     renderDisplayForm = product => (
         <FormGroup>
@@ -53,7 +63,7 @@ export default class DisplayForm extends React.Component {
                             {'Edit'}
                         </Button>
                     </LinkContainer>
-                    <Button onClick={() => { this.handleOnClick(match.params.number); }}>
+                    <Button onClick={this.handleOnClick}>
                         {'Delete'}
                     </Button>
                     <LinkContainer to="/">

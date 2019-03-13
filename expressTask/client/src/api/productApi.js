@@ -37,7 +37,7 @@ class ProductApi {
             );
         }
 
-        return response.json();
+        return response.status;
     }
 
     async displayProduct(productID) {
@@ -88,7 +88,7 @@ class ProductApi {
             );
         }
 
-        return response.json();
+        return response.status;
     }
 
     async searchProduct(productID) {
