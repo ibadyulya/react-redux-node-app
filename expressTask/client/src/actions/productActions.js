@@ -1,94 +1,13 @@
-import ProductApi from '../api/productApi';
 import ACTION_TYPES from '../constants/action-types';
-import ACTION_STATES from './actionStates';
 
-export const createProduct = entity => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_CREATE_REQUEST));
+export const createProduct = entity => ({ type: ACTION_TYPES.CREATE_PRODUCT_REQUEST, entity });
 
-    try {
-        const resData = await ProductApi.createProduct(entity);
+export const loadProductsList = () => ({ type: ACTION_TYPES.GET_PRODUCT_LIST_REQUEST });
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_CREATE_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_CREATE_FAILURE, error));
-    }
-};
+export const loadProduct = entityID => ({ type: ACTION_TYPES.GET_PRODUCT_REQUEST, entityID });
 
-export const displayProduct = entityID => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DISPLAY_REQUEST));
+export const updateProduct = entity => ({ type: ACTION_TYPES.UPDATE_PRODUCT_REQUEST, entity });
 
-    try {
-        const resData = await ProductApi.displayProduct(entityID);
+export const deleteProduct = entityID => ({ type: ACTION_TYPES.DELETE_PRODUCT_REQUEST, entityID });
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DISPLAY_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DISPLAY_FAILURE, error));
-    }
-};
-
-export const displayProductsList = () => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_LIST_DISPLAY_REQUEST));
-
-    try {
-        const resData = await ProductApi.displayProductsList();
-
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DISPLAY_LIST_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DISPLAY_LIST_FAILURE, error));
-    }
-};
-
-export const updateProduct = entity => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_UPDATE_REQUEST));
-
-    try {
-        const resData = await ProductApi.updateProduct(entity);
-
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_UPDATE_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_UPDATE_FAILURE, error));
-    }
-};
-
-export const deleteProduct = entityID => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DELETE_REQUEST));
-
-    try {
-        const resData = await ProductApi.deleteProduct(entityID);
-
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DELETE_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DELETE_FAILURE, error));
-    }
-};
-
-export const searchProduct = entityID => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_SEARCH_REQUEST));
-
-    try {
-        const resData = await ProductApi.searchProduct(entityID);
-
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_SEARCH_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_SEARCH_FAILURE, error));
-    }
-};
-
-export const filterList = value => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_FILTER_REQUEST));
-
-    try {
-        const resData = await ProductApi.filterList(value);
-
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_FILTER_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_FILTER_FAILURE, error));
-    }
-};
+export const filterList = value => ({ type: ACTION_TYPES.FILTER_PRODUCT_REQUEST, value });

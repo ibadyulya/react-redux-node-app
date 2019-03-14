@@ -31,11 +31,11 @@ export default class CreateForm extends React.Component {
 
     componentDidMount() {
         const {
-            match, searchProduct,
+            match, loadProduct,
         } = this.props;
 
         // eslint-disable-next-line no-unused-expressions
-        match.params.number && searchProduct(match.params.number);
+        match.params.number && loadProduct(match.params.number);
     }
 
     componentDidUpdate(prevProps) {
@@ -43,12 +43,13 @@ export default class CreateForm extends React.Component {
             product: {
                 name, category, price, _id,
             },
-            loadingProductSearch,
+            loadingProductDisplay,
             loadingProductCreate,
+            loadingProductUpdate,
         } = this.props;
 
-        if (loadingProductSearch === LOADING_STATUSES.VALID
-            && prevProps.loadingProductSearch === LOADING_STATUSES.LOADING) {
+        if (loadingProductDisplay === LOADING_STATUSES.VALID
+            && prevProps.loadingProductDisplay === LOADING_STATUSES.LOADING) {
             this.setState({
                 product: {
                     _id,
@@ -59,7 +60,7 @@ export default class CreateForm extends React.Component {
             });
         }
 
-        if (loadingProductCreate === LOADING_STATUSES.VALID) {
+        if (loadingProductCreate === LOADING_STATUSES.VALID || loadingProductUpdate === LOADING_STATUSES.VALID) {
             this.props.history.push('/');
         }
     }

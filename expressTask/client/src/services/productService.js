@@ -33,7 +33,7 @@ function displayProduct(entityID) {
     return fetch(`${config.serverURL}/api/product/${entityID}`, requestOptions).then(handleResponse);
 }
 
-function displayProductsList() {
+function loadProductsList() {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -81,7 +81,7 @@ function filterList(value) {
 const productService = {
     createProduct,
     displayProduct,
-    displayProductsList,
+    loadProductsList,
     updateProduct,
     deleteProduct,
     searchProduct,

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { displayProduct, updateProduct, deleteProduct } from '../actions/productActions';
+import { loadProduct, updateProduct, deleteProduct } from '../actions/productActions';
 
 import DisplayForm from '../components/DisplayForm';
 
@@ -19,8 +19,8 @@ function mapStateToProps(state) {
 
 
 const mapDispatchToProps = dispatch => ({
-    getProduct: id => dispatch(
-        displayProduct(id),
+    loadProduct: id => dispatch(
+        loadProduct(id),
     ),
     updateProduct: entity => dispatch(
         updateProduct(entity),

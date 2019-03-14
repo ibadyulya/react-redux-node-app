@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import alertActions from '../actions/alertActions';
 
 import { MainComponent } from '../components/MainComponent';
 

@@ -5,14 +5,14 @@ import { BASE_URLS } from '../constants';
 import FetchQuery from '../helpers/fetch-tool';
 
 class ProductApi {
-    async displayProductsList() {
+    async getProductsList() {
         const response = await FetchQuery.get(
             `${BASE_URLS.product}`,
         );
 
         if (!response.ok) {
             throw new Error(
-                `ProductApi: displayProductsList failed, HTTP status ${
+                `ProductApi: loadProductList failed, HTTP status ${
                     response.status
                 }`,
             );
@@ -40,7 +40,7 @@ class ProductApi {
         return response.status;
     }
 
-    async displayProduct(productID) {
+    async getProduct(productID) {
         const response = await FetchQuery.get(
             `${BASE_URLS.product}${productID}`,
         );
@@ -72,7 +72,7 @@ class ProductApi {
             );
         }
 
-        return response.json();
+        return response.status;
     }
 
     async deleteProduct(productID) {
@@ -89,22 +89,6 @@ class ProductApi {
         }
 
         return response.status;
-    }
-
-    async searchProduct(productID) {
-        const response = await FetchQuery.get(
-            `${BASE_URLS.product}${productID}`,
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                `ProductApi: searchProduct failed, HTTP status ${
-                    response.status
-                }`,
-            );
-        }
-
-        return response.json();
     }
 
     async filterList(filteringValue) {

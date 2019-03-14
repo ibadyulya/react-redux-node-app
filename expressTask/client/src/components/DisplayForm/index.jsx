@@ -11,8 +11,8 @@ import './styles.less';
 
 export default class DisplayForm extends React.Component {
     componentDidMount() {
-        const { getProduct, match } = this.props;
-        getProduct(match.params.number);
+        const { loadProduct, match } = this.props;
+        loadProduct(match.params.number);
     }
 
     componentDidUpdate() {
