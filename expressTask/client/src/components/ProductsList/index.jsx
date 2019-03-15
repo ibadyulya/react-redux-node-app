@@ -36,7 +36,7 @@ class ProductsList extends React.Component {
                     />
                     <Button type="primary">
                         <Link to="/create">
-                            Create New
+                            {'Create New'}
                         </Link>
                     </Button>
                 </div>
