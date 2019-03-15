@@ -1,11 +1,13 @@
-main {
-    margin-top: 56px;
-    background-color: rgba(255, 255, 255, 0.2);
-    display: flex;
-    justify-content: space-around;
-}
-
-.main-component-container {
+.app {
     display: flex;
     flex-direction: column;
+
+    &-body {
+        margin-top: 56px;
+        display: flex;
+        // flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
 }

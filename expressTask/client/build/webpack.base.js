@@ -35,7 +35,8 @@ module.exports = {
                     presets: ['env', 'stage-0', 'react', 'es2017'],
                     plugins: ['react-hot-loader/babel', ['transform-runtime', {
                         regenerator: true,
-                    }]],
+                    }], ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }],
+                    ],
                 },
             },
             {

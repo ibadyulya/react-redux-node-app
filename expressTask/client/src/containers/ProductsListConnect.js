@@ -4,11 +4,10 @@ import { displayProductsList, filterList } from '../actions/productActions';
 import ProductsList from '../components/ProductsList';
 
 function mapStateToProps(state) {
-    const { productsList, listExtracted } = state.productOperations;
+    const { productsList } = state.productOperations;
     return {
         productsList: (productsList && productsList.docs) || [],
         page: (productsList && productsList.page) || '',
-        listExtracted,
     };
 }
 
