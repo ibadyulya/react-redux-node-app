@@ -1,5 +1,5 @@
 import {
-    call, put, fork, all, takeEvery,
+    call, put, takeEvery, takeLatest,
 } from 'redux-saga/effects';
 import ProductApi from '../api/productApi';
 import ACTION_TYPES from '../constants/action-types';
@@ -54,41 +54,30 @@ function* filterList(action) {
         const resData = yield call(ProductApi.filterList, action.value);
         yield put({ type: ACTION_TYPES.FILTER_PRODUCT_SUCCESS, payload: resData });
     } catch (e) {
-        yield put({ type: ACTION_TYPES.FILTER_PRODUCT_FAILURE, message: e.message });
+        yield put({ type: ACTION_TYPES.PRODUCT_FILTER_FAILURE, message: e.message });
     }
 }
 
-function* watchcreateProduct() {
+export function* watchСreateProduct() {
     yield takeEvery(ACTION_TYPES.CREATE_PRODUCT_REQUEST, createProduct);
 }
 
-function* watchProuctList() {
+export function* watchProductList() {
     yield takeEvery(ACTION_TYPES.GET_PRODUCT_LIST_REQUEST, loadProductList);
 }
 
-function* watchLoadProduct() {
+export function* watchLoadProduct() {
     yield takeEvery(ACTION_TYPES.GET_PRODUCT_REQUEST, loadProduct);
 }
 
-function* watchUpdateProduct() {
+export function* watchUpdateProduct() {
     yield takeEvery(ACTION_TYPES.UPDATE_PRODUCT_REQUEST, updateProduct);
 }
 
-function* watchDeleteProduct() {
+export function* watchDeleteProduct() {
     yield takeEvery(ACTION_TYPES.DELETE_PRODUCT_REQUEST, deleteProduct);
 }
 
-function* watchfilterList() {
-    yield takeEvery(ACTION_TYPES.FILTER_PRODUCT_REQUEST, filterList);
-}
-
-export default function* root() {
-    yield all([
-        fork(watchcreateProduct),
-        fork(watchProuctList),
-        fork(watchLoadProduct),
-        fork(watchUpdateProduct),
-        fork(watchDeleteProduct),
-        fork(watchfilterList),
-    ]);
+export function* watchFilterList() {
+    yield takeLatest(ACTION_TYPES.FILTER_PRODUCT_REQUEST, filterList);
 }
