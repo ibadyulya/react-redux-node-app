@@ -17,7 +17,7 @@ const Table = (props) => {
             dataSource={data}
             pagination={
                 {
-                    position: 'both',
+                    position: 'bottom',
                     pageSize: 5,
                 }
             }

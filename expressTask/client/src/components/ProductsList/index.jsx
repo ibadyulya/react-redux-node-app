@@ -28,13 +28,13 @@ class ProductsList extends React.Component {
         const { productsList } = this.props;
         return (
             <div className="products-list">
-                <div className="products-list__form">
+                <div className="form">
                     <Search
+                        className="form__search"
                         placeholder="filter product"
                         onChange={this.filterList}
-                        style={{ width: 200 }}
                     />
-                    <Button type="primary">
+                    <Button className="form__button" type="primary">
                         <Link to="/create">
                             {'Create New'}
                         </Link>
