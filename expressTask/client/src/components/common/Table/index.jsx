@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { Table as AntdTable } from 'antd';
 
+import './styles.less';
+
 const Table = (props) => {
     const { data, handleRedirect, columns } = props;
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Input, Button } from 'antd';
 
 import Table from '../common/Table';
-import { productTableColumns } from '../../constants';
+import { PRODUCT_TABLE_COLUMNS } from '../../constants';
 import { convertToTableFormat } from '../../helpers/parsers';
 import './styles.less';
 
@@ -43,7 +43,7 @@ class ProductsList extends React.Component {
                 <Table
                     data={convertToTableFormat(productsList)}
                     handleRedirect={this.handleRedirect}
-                    columns={productTableColumns}
+                    columns={PRODUCT_TABLE_COLUMNS}
                 />
             </div>
         );

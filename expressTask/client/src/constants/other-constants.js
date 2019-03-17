@@ -1,4 +1,4 @@
-export const productTableColumns = [
+export const PRODUCT_TABLE_COLUMNS = [
     {
         title: 'Name',
         dataIndex: 'name',
@@ -13,5 +13,24 @@ export const productTableColumns = [
         title: 'Price',
         dataIndex: 'price',
         key: 'price',
+    },
+];
+
+export const PRODUCT_CATEGORIES = [
+    {
+        title: 'Smartphone',
+        value: 'Smartphone',
+    },
+    {
+        title: 'TV',
+        value: 'TV',
+    },
+    {
+        title: 'Notebook',
+        value: 'Notebook',
+    },
+    {
+        title: 'Console',
+        value: 'Console',
     },
 ];
