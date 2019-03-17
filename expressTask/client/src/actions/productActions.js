@@ -28,11 +28,11 @@ export const getProduct = entityID => async (dispatch) => {
     }
 };
 
-export const displayProductsList = () => async (dispatch) => {
+export const getProductsList = () => async (dispatch) => {
     dispatch(ACTION_STATES.request(ACTION_TYPES.GET_PRODUCT_LIST_REQUEST));
 
     try {
-        const resData = await ProductApi.displayProductsList();
+        const resData = await ProductApi.getProductsList();
 
         dispatch(ACTION_STATES.success(ACTION_TYPES.GET_PRODUCT_LIST_SUCCESS, resData));
     } catch (error) {

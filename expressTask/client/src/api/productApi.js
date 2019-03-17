@@ -5,14 +5,14 @@ import { BASE_URLS } from '../constants';
 import FetchQuery from '../helpers/fetch-tool';
 
 class ProductApi {
-    async displayProductsList() {
+    async getProductsList() {
         const response = await FetchQuery.get(
             `${BASE_URLS.product}`,
         );
 
         if (!response.ok) {
             throw new Error(
-                `ProductApi: displayProductsList failed, HTTP status ${
+                `ProductApi: getProductsList failed, HTTP status ${
                     response.status
                 }`,
             );
