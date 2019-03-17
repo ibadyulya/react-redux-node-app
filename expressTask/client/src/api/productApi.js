@@ -40,7 +40,7 @@ class ProductApi {
         return response.status;
     }
 
-    async displayProduct(productID) {
+    async getProduct(productID) {
         const response = await FetchQuery.get(
             `${BASE_URLS.product}${productID}`,
         );
@@ -89,22 +89,6 @@ class ProductApi {
         }
 
         return response.status;
-    }
-
-    async searchProduct(productID) {
-        const response = await FetchQuery.get(
-            `${BASE_URLS.product}${productID}`,
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                `ProductApi: searchProduct failed, HTTP status ${
-                    response.status
-                }`,
-            );
-        }
-
-        return response.json();
     }
 
     async filterList(filteringValue) {

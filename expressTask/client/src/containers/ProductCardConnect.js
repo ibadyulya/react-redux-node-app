@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { displayProduct, updateProduct, deleteProduct } from '../actions/productActions';
+import { getProduct, deleteProduct } from '../actions/productActions';
 
-import DisplayForm from '../components/DisplayForm';
+import ProductCard from '../components/ProductCard';
 
 function mapStateToProps(state) {
     const { product, loadingProductDelete } = state.productOperations;
@@ -20,19 +20,16 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => ({
     getProduct: id => dispatch(
-        displayProduct(id),
-    ),
-    updateProduct: entity => dispatch(
-        updateProduct(entity),
+        getProduct(id),
     ),
     deleteProduct: id => dispatch(
         deleteProduct(id),
     ),
 });
 
-const DisplayFormConnect = connect(
+const ProductCardConnect = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(DisplayForm);
+)(ProductCard);
 
-export default DisplayFormConnect;
+export default ProductCardConnect;

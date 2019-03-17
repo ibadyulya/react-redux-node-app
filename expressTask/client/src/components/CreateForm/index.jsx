@@ -31,11 +31,11 @@ class CreateForm extends React.Component {
 
     componentDidMount() {
         const {
-            match, searchProduct,
+            match, getProduct,
         } = this.props;
 
         // eslint-disable-next-line no-unused-expressions
-        match.params.number && searchProduct(match.params.number);
+        match.params.number && getProduct(match.params.number);
     }
 
     componentDidUpdate(prevProps) {
@@ -43,12 +43,12 @@ class CreateForm extends React.Component {
             product: {
                 name, category, price, _id,
             },
-            loadingProductSearch,
+            loadingProductGet,
             loadingProductCreate,
         } = this.props;
 
-        if (loadingProductSearch === LOADING_STATUSES.VALID
-        && prevProps.loadingProductSearch === LOADING_STATUSES.LOADING) {
+        if (loadingProductGet === LOADING_STATUSES.VALID
+        && prevProps.loadingProductGet === LOADING_STATUSES.LOADING) {
             this.setState({
                 _id,
                 name,
@@ -83,7 +83,7 @@ class CreateForm extends React.Component {
 
         const {
             match,
-            updateProduct,
+            getProduct,
             createProduct,
             form: { validateFields },
         } = this.props;
@@ -91,7 +91,7 @@ class CreateForm extends React.Component {
         validateFields((errors) => {
             if (!errors) {
                 if (match.params.number) {
-                    updateProduct({ name, category, price });
+                    getProduct({ name, category, price });
                 } else {
                     createProduct({ name, category, price });
                 }
@@ -100,7 +100,7 @@ class CreateForm extends React.Component {
     }
 
     render() {
-        const { category } = this.state;
+        const { category, name, price } = this.state;
         const { match, form: { getFieldDecorator } } = this.props;
 
         return (
@@ -119,6 +119,7 @@ class CreateForm extends React.Component {
                                 message: 'Product name cannot be longer than 25 characters',
                             },
                         ],
+                        initialValue: name,
                     })(
                         <Input
                             placeholder="Input Product Name"
@@ -151,6 +152,7 @@ class CreateForm extends React.Component {
                                 message: 'It is not a number',
                             },
                         ],
+                        initialValue: price,
                     })(
                         <InputNumber
                             style={{ width: '100%' }}

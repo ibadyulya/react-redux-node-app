@@ -3,92 +3,79 @@ import ACTION_TYPES from '../constants/action-types';
 import ACTION_STATES from './actionStates';
 
 export const createProduct = entity => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_CREATE_REQUEST));
+    dispatch(ACTION_STATES.request(ACTION_TYPES.CREATE_PRODUCT_REQUEST));
 
     try {
         const resData = await ProductApi.createProduct(entity);
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_CREATE_SUCCESS, resData));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.CREATE_PRODUCT_SUCCESS, resData));
     } catch (error) {
         console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_CREATE_FAILURE, error));
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.CREATE_PRODUCT_FAILURE, error));
     }
 };
 
-export const displayProduct = entityID => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DISPLAY_REQUEST));
+export const getProduct = entityID => async (dispatch) => {
+    dispatch(ACTION_STATES.request(ACTION_TYPES.GET_PRODUCT_REQUEST));
 
     try {
-        const resData = await ProductApi.displayProduct(entityID);
+        const resData = await ProductApi.getProduct(entityID);
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DISPLAY_SUCCESS, resData));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.GET_PRODUCT_SUCCESS, resData));
     } catch (error) {
         console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DISPLAY_FAILURE, error));
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.GET_PRODUCT_FAILURE, error));
     }
 };
 
 export const displayProductsList = () => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_LIST_DISPLAY_REQUEST));
+    dispatch(ACTION_STATES.request(ACTION_TYPES.GET_PRODUCT_LIST_REQUEST));
 
     try {
         const resData = await ProductApi.displayProductsList();
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DISPLAY_LIST_SUCCESS, resData));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.GET_PRODUCT_LIST_SUCCESS, resData));
     } catch (error) {
         console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DISPLAY_LIST_FAILURE, error));
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.GET_PRODUCT_LIST_FAILURE, error));
     }
 };
 
 export const updateProduct = entity => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_UPDATE_REQUEST));
+    dispatch(ACTION_STATES.request(ACTION_TYPES.UPDATE_PRODUCT_REQUEST));
 
     try {
         const resData = await ProductApi.updateProduct(entity);
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_UPDATE_SUCCESS, resData));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.UPDATE_PRODUCT_SUCCESS, resData));
     } catch (error) {
         console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_UPDATE_FAILURE, error));
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.UPDATE_PRODUCT_FAILURE, error));
     }
 };
 
 export const deleteProduct = entityID => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_DELETE_REQUEST));
+    dispatch(ACTION_STATES.request(ACTION_TYPES.DELETE_PRODUCT_REQUEST));
 
     try {
         const resData = await ProductApi.deleteProduct(entityID);
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_DELETE_SUCCESS, resData));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.DELETE_PRODUCT_SUCCESS, resData));
     } catch (error) {
         console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_DELETE_FAILURE, error));
-    }
-};
-
-export const searchProduct = entityID => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_SEARCH_REQUEST));
-
-    try {
-        const resData = await ProductApi.searchProduct(entityID);
-
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_SEARCH_SUCCESS, resData));
-    } catch (error) {
-        console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_SEARCH_FAILURE, error));
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.DELETE_PRODUCT_FAILURE, error));
     }
 };
 
 export const filterList = value => async (dispatch) => {
-    dispatch(ACTION_STATES.request(ACTION_TYPES.PRODUCT_FILTER_REQUEST));
+    dispatch(ACTION_STATES.request(ACTION_TYPES.FILTER_PRODUCT_REQUEST));
 
     try {
         const resData = await ProductApi.filterList(value);
 
-        dispatch(ACTION_STATES.success(ACTION_TYPES.PRODUCT_FILTER_SUCCESS, resData));
+        dispatch(ACTION_STATES.success(ACTION_TYPES.FILTER_PRODUCT_SUCCESS, resData));
     } catch (error) {
         console.error(error);
-        dispatch(ACTION_STATES.failure(ACTION_TYPES.PRODUCT_FILTER_FAILURE, error));
+        dispatch(ACTION_STATES.failure(ACTION_TYPES.FILTER_PRODUCT_FAILURE, error));
     }
 };

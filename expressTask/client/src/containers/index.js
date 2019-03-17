@@ -1,9 +1,9 @@
 import CreateFormConnect from './CreateFormConnect';
-import DisplayFormConnect from './DisplayFormConnect';
+import ProductCardConnect from './ProductCardConnect';
 import ProductsListConnect from './ProductsListConnect';
 
 export {
     CreateFormConnect,
-    DisplayFormConnect,
+    ProductCardConnect,
     ProductsListConnect,
 };

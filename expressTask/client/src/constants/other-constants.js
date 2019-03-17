@@ -34,3 +34,26 @@ export const PRODUCT_CATEGORIES = [
         value: 'Console',
     },
 ];
+
+export const CARD_DICTIONARY = [
+    {
+        fieldName: 'ID',
+        value: 'id',
+    },
+    {
+        fieldName: 'Name',
+        value: 'name',
+    },
+    {
+        fieldName: 'Category',
+        value: 'category',
+    },
+    {
+        fieldName: 'Price',
+        value: 'price',
+    },
+    {
+        fieldName: 'Data Created',
+        value: 'data',
+    },
+];
