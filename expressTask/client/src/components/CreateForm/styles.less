@@ -1,28 +1,21 @@
-.create-edit-form {
-    margin: 50px 0px;
-    width: 20%;
-    background-color: rgb(240, 238, 233);
+.create-form {
+    margin: 100px 0 0;
+    width: 18%;
     padding: 23px 20px;
-}
+    box-shadow: 0px 0px 33px -4px rgba(0,0,0,0.43);
 
-.create-edit-form .btn {
-    background-color: #cfcdcd;
-    display: inline-block;
-    padding: 8px 34px;
-    font-size: 18px;
-    margin: 0px 3px;
-    &:hover {
-        background-color: #c92c2c;
-    }
-}
+    .buttons-block {
+        margin: 0;
 
-.create-edit-form .btn.active {
-    background-color: rgb(207, 205, 205);
-    box-shadow: none;
-    &:hover {
-        background-color: #c92c2c;
+        .ant {
+            &-form-item-children {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &-btn {
+                width: 45%;
+            }
+        }
     }
-}
-.create-edit-form a {
-    color: black;
 }

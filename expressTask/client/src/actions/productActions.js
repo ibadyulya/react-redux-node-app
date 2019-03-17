@@ -4,7 +4,7 @@ export const createProduct = entity => ({ type: ACTION_TYPES.CREATE_PRODUCT_REQU
 
 export const loadProductsList = () => ({ type: ACTION_TYPES.GET_PRODUCT_LIST_REQUEST });
 
-export const loadProduct = entityID => ({ type: ACTION_TYPES.GET_PRODUCT_REQUEST, entityID });
+export const getProduct = entityID => ({ type: ACTION_TYPES.GET_PRODUCT_REQUEST, entityID });
 
 export const updateProduct = entity => ({ type: ACTION_TYPES.UPDATE_PRODUCT_REQUEST, entity });
 

@@ -1,0 +1,17 @@
+.card {
+    &__row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        & > p {
+            font-weight: 600;
+
+            &:last-child {
+                width: 60%;
+                font-weight: 700;
+                font-size: 15px;
+            }
+        }
+    }
+}

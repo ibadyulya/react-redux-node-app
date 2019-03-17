@@ -4,17 +4,16 @@ import { loadProductsList, filterList } from '../actions/productActions';
 import ProductsList from '../components/ProductsList';
 
 function mapStateToProps(state) {
-    const { productsList, listExtracted } = state.productOperations;
+    const { productsList } = state.productOperations;
     return {
         productsList: (productsList && productsList.docs) || [],
         page: (productsList && productsList.page) || '',
-        listExtracted,
     };
 }
 
 
 const mapDispatchToProps = dispatch => ({
-    getProduct: () => dispatch(
+    getProductList: () => dispatch(
         loadProductsList(),
     ),
     filterList: filteringValue => dispatch(

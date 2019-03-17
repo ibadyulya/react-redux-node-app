@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../Header';
 import ProductsListConnect from '../../containers/ProductsListConnect';
 import CreateFormConnect from '../../containers/CreateFormConnect';
-import DisplayFormConnect from '../../containers/DisplayFormConnect';
+import ProductCardConnect from '../../containers/ProductCardConnect';
 import EditFormConnect from '../../containers/EditFormConnect';
 
 
@@ -23,7 +23,7 @@ export class MainComponent extends React.Component {
                         <Switch>
                             <Route exact path="/" component={ProductsListConnect} />
                             <Route exact path="/create" component={CreateFormConnect} />
-                            <Route exact path="/display/:number" component={DisplayFormConnect} />
+                            <Route exact path="/display/:number" component={ProductCardConnect} />
                             <Route exact path="/edit/:number" component={EditFormConnect} />
                         </Switch>
                     </main>

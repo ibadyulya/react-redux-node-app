@@ -1,66 +1,50 @@
 import React from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import {
-    Table, Button, FormGroup, Input,
-} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
+import { Input, Button } from 'antd';
+
+import Table from '../common/Table';
+import { PRODUCT_TABLE_COLUMNS } from '../../constants';
+import { convertToTableFormat } from '../../helpers/parsers';
 import './styles.less';
 
+const { Search } = Input;
 class ProductsList extends React.Component {
     componentDidMount() {
-        this.props.getProduct();
+        this.props.getProductList();
     }
-
-    productsListRender = productsList => productsList.map((product, index) => (
-        <LinkContainer key={product._id} to={`/display/${product._id}/`}>
-            <tr className="list-row">
-                <th scope="row">
-                    {index}
-                </th>
-                <td>
-                    {product.name}
-                </td>
-                <td>
-                    {product.category}
-                </td>
-            </tr>
-        </LinkContainer>
-    ))
 
     filterList = (event) => {
         this.props.filterList(event.target.value.toLowerCase());
+    }
+
+    handleRedirect = (productKey) => {
+        const { history } = this.props;
+
+        history.push(`/product/card/${productKey}/`);
     }
 
     render() {
         const { productsList } = this.props;
         return (
             <div className="products-list">
-                <FormGroup className="list-form">
-                    <Input onChange={this.filterList} placeholder="filter products" />
-                    <LinkContainer to="/create">
-                        <Button>
+                <div className="form">
+                    <Search
+                        className="form__search"
+                        placeholder="filter product"
+                        onChange={this.filterList}
+                    />
+                    <Button className="form__button" type="primary">
+                        <Link to="/product/create/">
                             {'Create New'}
-                        </Button>
-                    </LinkContainer>
-                </FormGroup>
-                <Table striped>
-                    <thead>
-                        <tr>
-                            <th>
-                                {'#'}
-                            </th>
-                            <th>
-                                {'Product Name'}
-                            </th>
-                            <th>
-                                {'Category'}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.productsListRender(productsList)}
-                    </tbody>
-                </Table>
+                        </Link>
+                    </Button>
+                </div>
+                <Table
+                    data={convertToTableFormat(productsList)}
+                    handleRedirect={this.handleRedirect}
+                    columns={PRODUCT_TABLE_COLUMNS}
+                />
             </div>
         );
     }

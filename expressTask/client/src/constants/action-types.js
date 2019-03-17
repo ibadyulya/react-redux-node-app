@@ -25,7 +25,6 @@ const ACTION_TYPES = keyMirror({
     FILTER_PRODUCT_REQUEST: null,
     FILTER_PRODUCT_SUCCESS: null,
     FILTER_PRODUCT_FAILURE: null,
-
 });
 
 export default ACTION_TYPES;

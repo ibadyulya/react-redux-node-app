@@ -1,8 +1,8 @@
 const routes = {
     main: '/',
-    'product.create': '/create/',
-    'product.edit': '/edit/:number/',
-    'product.display': '/display/:number/',
+    'product.create': '/product/create/',
+    'product.edit': '/product/edit/:number/',
+    'product.card': '/product/card/:number/',
 };
 
 export default routes;

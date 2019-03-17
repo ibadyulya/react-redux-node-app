@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
-import { createProduct, loadProduct, updateProduct } from '../actions/productActions';
+import { createProduct, getProduct, updateProduct } from '../actions/productActions';
 
 import CreateForm from '../components/CreateForm';
 
 function mapStateToProps(state) {
     const {
-        loadingProductCreate, loadingProductDisplay, loadingProductUpdate, product,
+        loadingProductCreate, loadingProductGet, product,
     } = state.productOperations;
 
     return {
         loadingProductCreate,
-        loadingProductDisplay,
-        loadingProductUpdate,
+        loadingProductGet,
         product,
     };
 }
@@ -21,8 +20,8 @@ const mapDispatchToProps = dispatch => ({
     createProduct: entity => dispatch(
         createProduct(entity),
     ),
-    loadProduct: id => dispatch(
-        loadProduct(id),
+    getProduct: id => dispatch(
+        getProduct(id),
     ),
     updateProduct: entity => dispatch(
         updateProduct(entity),

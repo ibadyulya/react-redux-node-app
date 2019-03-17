@@ -4,10 +4,9 @@ import { LOADING_STATUSES } from '../constants/index';
 const initialState = {
     productsList: '',
     product: [],
-    foundProduct: null,
     loadingProductCreate: LOADING_STATUSES.NONE,
-    loadingProductDisplay: LOADING_STATUSES.NONE,
-    loadingProductListDisplay: LOADING_STATUSES.NONE,
+    loadingProductGet: LOADING_STATUSES.NONE,
+    loadingProductListGet: LOADING_STATUSES.NONE,
     loadingProductSearch: LOADING_STATUSES.NONE,
     loadingProductUpdate: LOADING_STATUSES.NONE,
     loadingProductFilter: LOADING_STATUSES.NONE,
@@ -35,37 +34,37 @@ export default function productOperations(state = initialState, action) {
     case ACTION_TYPES.GET_PRODUCT_REQUEST:
         return {
             ...initialState,
-            loadingProductDisplay: LOADING_STATUSES.LOADING,
+            loadingProductGet: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.GET_PRODUCT_SUCCESS:
         return {
             ...initialState,
             product: action.payload,
-            loadingProductDisplay: LOADING_STATUSES.VALID,
+            loadingProductGet: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.GET_PRODUCT_FAILURE:
         return {
             ...initialState,
             error: action.message,
-            loadingProductDisplay: LOADING_STATUSES.INVALID,
+            loadingProductGet: LOADING_STATUSES.INVALID,
         };
     case ACTION_TYPES.GET_PRODUCT_LIST_REQUEST:
         return {
             ...initialState,
             productsList: action.payload,
-            loadingProductListDisplay: LOADING_STATUSES.LOADING,
+            loadingProductListGet: LOADING_STATUSES.LOADING,
         };
     case ACTION_TYPES.GET_PRODUCT_LIST_SUCCESS:
         return {
             ...initialState,
             productsList: action.payload,
-            loadingProductListDisplay: LOADING_STATUSES.VALID,
+            loadingProductListGet: LOADING_STATUSES.VALID,
         };
     case ACTION_TYPES.GET_PRODUCT_LIST_FAILURE:
         return {
             ...initialState,
             error: action.message,
-            loadingProductListDisplay: LOADING_STATUSES.INVALID,
+            loadingProductListGet: LOADING_STATUSES.INVALID,
         };
     case ACTION_TYPES.PRODUCT_SEARCH_FAILURE:
         return {
