@@ -14,15 +14,15 @@ class ProductsList extends React.Component {
         this.props.getProductList();
     }
 
-    filterList = (event) => {
+    filterList = event => {
         this.props.filterList(event.target.value.toLowerCase());
-    }
+    };
 
-    handleRedirect = (productKey) => {
+    handleRedirect = productKey => {
         const { history } = this.props;
 
         history.push(`/product/card/${productKey}/`);
-    }
+    };
 
     render() {
         const { productsList } = this.props;
@@ -35,9 +35,7 @@ class ProductsList extends React.Component {
                         onChange={this.filterList}
                     />
                     <Button className="form__button" type="primary">
-                        <Link to="/product/create/">
-                            {'Create New'}
-                        </Link>
+                        <Link to="/product/create/">Create New</Link>
                     </Button>
                 </div>
                 <Table

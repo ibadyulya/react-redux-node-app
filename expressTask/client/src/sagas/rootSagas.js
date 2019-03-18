@@ -1,6 +1,4 @@
-import {
-    fork, all,
-} from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects';
 
 import {
     watchСreateProduct,
@@ -8,7 +6,7 @@ import {
     watchLoadProduct,
     watchUpdateProduct,
     watchDeleteProduct,
-    watchFilterList,
+    watchFilterList
 } from './productSagas';
 
 function* rootSagas() {
@@ -18,7 +16,7 @@ function* rootSagas() {
         fork(watchLoadProduct),
         fork(watchUpdateProduct),
         fork(watchDeleteProduct),
-        fork(watchFilterList),
+        fork(watchFilterList)
     ]);
 }
 

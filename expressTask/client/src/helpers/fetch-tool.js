@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
 const baseHeader = {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
 };
 
 const getHeaders = (headers, baseHeaders, setHeaders) => {
@@ -15,95 +15,68 @@ const getHeaders = (headers, baseHeaders, setHeaders) => {
 };
 
 class FetchQuery {
-    get(url: string, options: Object = {}) {
+    get(url, options = {}) {
+        console.log('tyt');
         const { headers, setHeaders = true } = options;
-        const requestHeaders = getHeaders(
-            headers,
-            baseHeader,
-            setHeaders,
-        );
+        const requestHeaders = getHeaders(headers, baseHeader, setHeaders);
 
         return fetch(url, {
             headers: {
-                ...requestHeaders,
+                ...requestHeaders
             },
-            method: 'GET',
+            method: 'GET'
         });
     }
 
-    post(url: string, options: Object = {}) {
-        const {
-            headers, body, setHeaders = true,
-        } = options;
-        const requestHeaders = getHeaders(
-            headers,
-            baseHeader,
-            setHeaders,
-        );
+    post(url, options = {}) {
+        const { headers, body, setHeaders = true } = options;
+        const requestHeaders = getHeaders(headers, baseHeader, setHeaders);
 
         return fetch(url, {
             headers: {
-                ...requestHeaders,
+                ...requestHeaders
             },
             method: 'POST',
-            body,
+            body
         });
     }
 
-    put(url: string, options: Object = {}) {
-        const {
-            headers, body, setHeaders = true,
-        } = options;
-        const requestHeaders = getHeaders(
-            headers,
-            baseHeader,
-            setHeaders,
-        );
+    put(url, options = {}) {
+        const { headers, body, setHeaders = true } = options;
+        const requestHeaders = getHeaders(headers, baseHeader, setHeaders);
 
         return fetch(url, {
             headers: {
-                ...requestHeaders,
+                ...requestHeaders
             },
             method: 'PUT',
-            body,
+            body
         });
     }
 
-    patch(url: string, options: Object = {}) {
-        const {
-            headers, body, setHeaders = true,
-        } = options;
-        const requestHeaders = getHeaders(
-            headers,
-            baseHeader,
-            setHeaders,
-        );
+    patch(url, options = {}) {
+        const { headers, body, setHeaders = true } = options;
+        const requestHeaders = getHeaders(headers, baseHeader, setHeaders);
 
         return fetch(url, {
             headers: {
-                ...requestHeaders,
+                ...requestHeaders
             },
             method: 'PATCH',
-            body,
+            body
         });
     }
 
-    delete(url: string, options: Object = {}) {
-        const {
-            headers, body, setHeaders = true,
-        } = options;
-        const requestHeaders = getHeaders(
-            headers,
-            baseHeader,
-            setHeaders,
-        );
+    delete(url, options = {}) {
+        const { headers, body, setHeaders = true } = options;
+        const requestHeaders = getHeaders(headers, baseHeader, setHeaders);
 
         return fetch(url, {
             headers: {
-                ...requestHeaders,
+                ...requestHeaders
             },
             method: 'DELETE',
-            body,
+            body
         });
     }
 }

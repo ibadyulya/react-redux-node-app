@@ -2,9 +2,7 @@
 /* eslint-disable react/no-did-update-set-state */
 import React from 'react';
 
-import {
-    Form, Input, InputNumber, Button,
-} from 'antd';
+import { Form, Input, InputNumber, Button } from 'antd';
 
 import { Link } from 'react-router-dom';
 
@@ -16,8 +14,8 @@ import './styles.less';
 const formItemLayout = {
     wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 24 },
-    },
+        sm: { span: 24 }
+    }
 };
 
 class CreateForm extends React.Component {
@@ -26,13 +24,11 @@ class CreateForm extends React.Component {
         name: '',
         category: 'Select type of product',
         price: '',
-        formErrors: [],
+        formErrors: []
     };
 
     componentDidMount() {
-        const {
-            match, getProduct,
-        } = this.props;
+        const { match, getProduct } = this.props;
 
         // eslint-disable-next-line no-unused-expressions
         match.params.number && getProduct(match.params.number);
@@ -40,20 +36,20 @@ class CreateForm extends React.Component {
 
     componentDidUpdate(prevProps) {
         const {
-            product: {
-                name, category, price, _id,
-            },
+            product: { name, category, price, _id },
             loadingProductGet,
-            loadingProductCreate,
+            loadingProductCreate
         } = this.props;
 
-        if (loadingProductGet === LOADING_STATUSES.VALID
-        && prevProps.loadingProductGet === LOADING_STATUSES.LOADING) {
+        if (
+            loadingProductGet === LOADING_STATUSES.VALID &&
+            prevProps.loadingProductGet === LOADING_STATUSES.LOADING
+        ) {
             this.setState({
                 _id,
                 name,
                 category,
-                price,
+                price
             });
         }
 
@@ -62,33 +58,31 @@ class CreateForm extends React.Component {
         }
     }
 
-    onProductNameChange = (event) => {
+    onProductNameChange = event => {
         const { value } = event.target;
 
         this.setState({ name: value });
-    }
+    };
 
-    onProductCategoryChange = (value) => {
+    onProductCategoryChange = value => {
         this.setState({ category: value });
-    }
+    };
 
-    onProductPriceChange = (value) => {
+    onProductPriceChange = value => {
         this.setState({ price: value });
-    }
+    };
 
     handleSubmit = () => {
-        const {
-            name, category, price,
-        } = this.state;
+        const { name, category, price } = this.state;
 
         const {
             match,
             updateProduct,
             createProduct,
-            form: { validateFields },
+            form: { validateFields }
         } = this.props;
 
-        validateFields((errors) => {
+        validateFields(errors => {
             if (!errors) {
                 if (match.params.number) {
                     updateProduct({ name, category, price });
@@ -97,79 +91,76 @@ class CreateForm extends React.Component {
                 }
             }
         });
-    }
+    };
 
     render() {
         const { category, name, price } = this.state;
-        const { match, form: { getFieldDecorator } } = this.props;
+        const {
+            match,
+            form: { getFieldDecorator }
+        } = this.props;
 
         return (
-            <Form className="create-form" {...formItemLayout} onSubmit={this.handleSubmit}>
-                <Form.Item
-                    hasFeedback
-                >
+            <Form
+                className="create-form"
+                {...formItemLayout}
+                onSubmit={this.handleSubmit}
+            >
+                <Form.Item hasFeedback>
                     {getFieldDecorator('name', {
                         rules: [
                             {
                                 required: true,
-                                message: 'Please input product name',
+                                message: 'Please input product name'
                             },
                             {
                                 max: 25,
-                                message: 'Product name cannot be longer than 25 characters',
-                            },
+                                message:
+                                    'Product name cannot be longer than 25 characters'
+                            }
                         ],
-                        initialValue: name,
+                        initialValue: name
                     })(
                         <Input
                             placeholder="Input Product Name"
                             onChange={this.onProductNameChange}
-                        />,
+                        />
                     )}
                 </Form.Item>
-                <Form.Item
-                    hasFeedback
-                    required
-                >
+                <Form.Item hasFeedback required>
                     <OptionMenu
                         handleChange={this.onProductCategoryChange}
                         options={PRODUCT_CATEGORIES}
                         value={category}
                     />
                 </Form.Item>
-                <Form.Item
-                    hasFeedback
-                    required
-                >
+                <Form.Item hasFeedback required>
                     {getFieldDecorator('price', {
                         rules: [
                             {
                                 required: true,
-                                message: 'Please input product price',
+                                message: 'Please input product price'
                             },
                             {
                                 pattern: new RegExp('^[0-9]*$'),
-                                message: 'It is not a number',
-                            },
+                                message: 'It is not a number'
+                            }
                         ],
-                        initialValue: price,
+                        initialValue: price
                     })(
                         <InputNumber
                             style={{ width: '100%' }}
                             placeholder="Input Price $"
                             onChange={this.onProductPriceChange}
-                        />,
+                        />
                     )}
-
                 </Form.Item>
                 <Form.Item className="buttons-block">
                     <Button type="primary" onClick={this.handleSubmit}>
-                        { match.params.number ? 'Edit' : 'Create' }
+                        {match.params.number ? 'Edit' : 'Create'}
                     </Button>
                     <Button type="default">
-                        <Link to="/">
-                            {'Cancel'}
-                        </Link>
+                        <Link to="/">Cancel</Link>
                     </Button>
                 </Form.Item>
             </Form>

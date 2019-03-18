@@ -7,23 +7,18 @@ function mapStateToProps(state) {
     const { productsList } = state.productOperations;
     return {
         productsList: (productsList && productsList.docs) || [],
-        page: (productsList && productsList.page) || '',
+        page: (productsList && productsList.page) || ''
     };
 }
 
-
 const mapDispatchToProps = dispatch => ({
-    getProductList: () => dispatch(
-        loadProductsList(),
-    ),
-    filterList: filteringValue => dispatch(
-        filterList(filteringValue),
-    ),
+    getProductList: () => dispatch(loadProductsList()),
+    filterList: filteringValue => dispatch(filterList(filteringValue))
 });
 
 const ProductsListConnect = connect(
     mapStateToProps,
-    mapDispatchToProps,
+    mapDispatchToProps
 )(ProductsList);
 
 export default ProductsListConnect;

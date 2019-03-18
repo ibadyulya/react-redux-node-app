@@ -6,15 +6,13 @@ import FetchQuery from '../helpers/fetch-tool';
 
 class ProductApi {
     async getProductsList() {
-        const response = await FetchQuery.get(
-            `${BASE_URLS.product}`,
-        );
+        const response = await FetchQuery.get(`${BASE_URLS.product}`);
 
         if (!response.ok) {
             throw new Error(
                 `ProductApi: loadProductList failed, HTTP status ${
                     response.status
-                }`,
+                }`
             );
         }
 
@@ -22,18 +20,15 @@ class ProductApi {
     }
 
     async createProduct(newProduct) {
-        const response = await FetchQuery.post(
-            `${BASE_URLS.product}`,
-            {
-                body: JSON.stringify(newProduct),
-            },
-        );
+        const response = await FetchQuery.post(`${BASE_URLS.product}`, {
+            body: JSON.stringify(newProduct)
+        });
 
         if (!response.ok) {
             throw new Error(
                 `ProductApi: createProduct failed, HTTP status ${
                     response.status
-                }`,
+                }`
             );
         }
 
@@ -42,14 +37,14 @@ class ProductApi {
 
     async getProduct(productID) {
         const response = await FetchQuery.get(
-            `${BASE_URLS.product}${productID}`,
+            `${BASE_URLS.product}${productID}`
         );
 
         if (!response.ok) {
             throw new Error(
                 `ProductApi: displayProduct failed, HTTP status ${
                     response.status
-                }`,
+                }`
             );
         }
 
@@ -57,18 +52,15 @@ class ProductApi {
     }
 
     async updateProduct(editedProduct) {
-        const response = await FetchQuery.put(
-            `${BASE_URLS.product}`,
-            {
-                body: JSON.stringify(editedProduct),
-            },
-        );
+        const response = await FetchQuery.put(`${BASE_URLS.product}`, {
+            body: JSON.stringify(editedProduct)
+        });
 
         if (!response.ok) {
             throw new Error(
                 `ProductApi: createProduct failed, HTTP status ${
                     response.status
-                }`,
+                }`
             );
         }
 
@@ -77,14 +69,14 @@ class ProductApi {
 
     async deleteProduct(productID) {
         const response = await FetchQuery.delete(
-            `${BASE_URLS.product}${productID}`,
+            `${BASE_URLS.product}${productID}`
         );
 
         if (!response.ok) {
             throw new Error(
                 `ProductApi: deleteProduct failed, HTTP status ${
                     response.status
-                }`,
+                }`
             );
         }
 
@@ -92,18 +84,13 @@ class ProductApi {
     }
 
     async filterList(filteringValue) {
-        const response = await FetchQuery.post(
-            `${BASE_URLS.productFilter}`,
-            {
-                body: JSON.stringify({ filteringValue }),
-            },
-        );
+        const response = await FetchQuery.post(`${BASE_URLS.productFilter}`, {
+            body: JSON.stringify({ filteringValue })
+        });
 
         if (!response.ok) {
             throw new Error(
-                `ProductApi: filterList failed, HTTP status ${
-                    response.status
-                }`,
+                `ProductApi: filterList failed, HTTP status ${response.status}`
             );
         }
 

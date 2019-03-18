@@ -1,36 +1,35 @@
 import { connect } from 'react-redux';
-import { createProduct, getProduct, updateProduct } from '../actions/productActions';
+import {
+    createProduct,
+    getProduct,
+    updateProduct
+} from '../actions/productActions';
 
 import CreateForm from '../components/CreateForm';
 
 function mapStateToProps(state) {
     const {
-        loadingProductCreate, loadingProductGet, product,
+        loadingProductCreate,
+        loadingProductGet,
+        product
     } = state.productOperations;
 
     return {
         loadingProductCreate,
         loadingProductGet,
-        product,
+        product
     };
 }
 
-
 const mapDispatchToProps = dispatch => ({
-    createProduct: entity => dispatch(
-        createProduct(entity),
-    ),
-    getProduct: id => dispatch(
-        getProduct(id),
-    ),
-    updateProduct: entity => dispatch(
-        updateProduct(entity),
-    ),
+    createProduct: entity => dispatch(createProduct(entity)),
+    getProduct: id => dispatch(getProduct(id)),
+    updateProduct: entity => dispatch(updateProduct(entity))
 });
 
 const CreateFormConnect = connect(
     mapStateToProps,
-    mapDispatchToProps,
+    mapDispatchToProps
 )(CreateForm);
 
 export default CreateFormConnect;

@@ -4,7 +4,6 @@ import { Button } from 'antd';
 
 import Card from '../common/Card';
 
-
 import { LOADING_STATUSES, CARD_DICTIONARY } from '../../constants/index';
 
 import './styles.less';
@@ -27,13 +26,17 @@ export default class ProductCard extends React.Component {
         const { deleteProduct, product } = this.props;
 
         deleteProduct(product.id);
-    }
+    };
 
     render() {
         const { product, match } = this.props;
         return (
             <div className="product-card">
-                <Card title="Product" dictionary={CARD_DICTIONARY} values={product} />
+                <Card
+                    title="Product"
+                    dictionary={CARD_DICTIONARY}
+                    values={product}
+                />
                 <hr />
                 <div className="buttons-block">
                     <Button type="primary">
@@ -41,13 +44,9 @@ export default class ProductCard extends React.Component {
                             {'Edit'}
                         </Link>
                     </Button>
-                    <Button onClick={this.handleOnClick}>
-                        {'Delete'}
-                    </Button>
+                    <Button onClick={this.handleOnClick}>{'Delete'} </Button>
                     <Button>
-                        <Link to="/">
-                            {'Cancel'}
-                        </Link>
+                        <Link to="/">{'Cancel'} </Link>
                     </Button>
                 </div>
             </div>

@@ -1,5 +1,9 @@
 import { connect } from 'react-redux';
-import { getProduct, updateProduct, deleteProduct } from '../actions/productActions';
+import {
+    getProduct,
+    updateProduct,
+    deleteProduct
+} from '../actions/productActions';
 
 import ProductCard from '../components/ProductCard';
 
@@ -11,28 +15,21 @@ function mapStateToProps(state) {
             name: product ? product.name : null,
             category: product ? product.category : null,
             price: product ? product.price : null,
-            data: product ? product.created : null,
+            data: product ? product.created : null
         },
-        loadingProductDelete,
+        loadingProductDelete
     };
 }
 
-
 const mapDispatchToProps = dispatch => ({
-    getProduct: id => dispatch(
-        getProduct(id),
-    ),
-    updateProduct: entity => dispatch(
-        updateProduct(entity),
-    ),
-    deleteProduct: id => dispatch(
-        deleteProduct(id),
-    ),
+    getProduct: id => dispatch(getProduct(id)),
+    updateProduct: entity => dispatch(updateProduct(entity)),
+    deleteProduct: id => dispatch(deleteProduct(id))
 });
 
 const ProductCardConnect = connect(
     mapStateToProps,
-    mapDispatchToProps,
+    mapDispatchToProps
 )(ProductCard);
 
 export default ProductCardConnect;

@@ -2,9 +2,8 @@ import { combineReducers } from 'redux';
 
 import productOperations from './productOperations';
 
-
 const rootReducer = combineReducers({
-    productOperations,
+    productOperations
 });
 
 export default rootReducer;

@@ -1,6 +1,29 @@
 {
+    "env": {
+        "browser": true,
+        "es6": true,
+        "commonjs": true,
+        "node": true
+    },
     "parser": "babel-eslint",
-    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        }
+    },
+    "extends": [
+        "airbnb",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "prettier",
+        "prettier/react"
+    ],
     "plugins": [
         "react",
         "jsx-a11y",
@@ -10,20 +33,25 @@
     "rules": {
         "import/no-unresolved": "off",
         "react/destructuring-assignment": [0, "always"],
-        "linebreak-style": [0, "error", "windows"],
-        "indent": [2, 4],
+        "linebreak-style": [0, 1, "windows"],
         "max-len": [1, 120, 2, {"ignoreComments": true}],
-        "react/jsx-indent-props": [2, 4],
-        "react/jsx-indent": [2, 4],
         "no-underscore-dangle": "off",
         "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
         "import/extensions": [0],
         "import/prefer-default-export": "off",
+        "prettier/prettier": [
+            1,
+            {
+                "singleQuote": true,
+                "tabWidth": 4
+            }
+        ],
         "react/prop-types": [0],
         "react/forbid-prop-types": [0],
+        "react/jsx-one-expression-per-line": "off",
         "jsx-a11y/click-events-have-key-events": [0],
         "jsx-a11y/no-noninteractive-element-interactions": [0],
-        "jsx-a11y/label-has-for": [ 2, {
+        "jsx-a11y/label-has-for": [ 1, {
             "required": {
                 "some": [ "nesting", "id" ]
             }
@@ -44,8 +72,5 @@
                 ]
             }
         ]
-    },
-    "env": {
-        "browser": true
-    } 
+    }
 }
