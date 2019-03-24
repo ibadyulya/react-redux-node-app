@@ -3,7 +3,8 @@
         "browser": true,
         "es6": true,
         "commonjs": true,
-        "node": true
+        "node": true,
+        "jest/globals": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -22,22 +23,22 @@
         "plugin:import/errors",
         "plugin:import/warnings",
         "prettier",
-        "prettier/react"
+        "prettier/react",
+        "plugin:jest/recommended"
     ],
-    "plugins": [
-        "react",
-        "jsx-a11y",
-        "import",
-        "prettier"
-    ],
+    "plugins": ["react", "jsx-a11y", "import", "prettier", "jest"],
     "rules": {
         "import/no-unresolved": "off",
         "react/destructuring-assignment": [0, "always"],
         "linebreak-style": [0, 1, "windows"],
-        "max-len": [1, 120, 2, {"ignoreComments": true}],
+        "max-len": [1, 120, 2, { "ignoreComments": true }],
         "no-underscore-dangle": "off",
-        "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+        "react/prefer-stateless-function": [
+            0,
+            { "ignorePureComponents": true }
+        ],
         "import/extensions": [0],
+        "import/no-extraneous-dependencies": [1, { "devDependencies": true }],
         "import/prefer-default-export": "off",
         "prettier/prettier": [
             1,
@@ -51,11 +52,14 @@
         "react/jsx-one-expression-per-line": "off",
         "jsx-a11y/click-events-have-key-events": [0],
         "jsx-a11y/no-noninteractive-element-interactions": [0],
-        "jsx-a11y/label-has-for": [ 1, {
-            "required": {
-                "some": [ "nesting", "id" ]
+        "jsx-a11y/label-has-for": [
+            1,
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
             }
-        }],
+        ],
         "no-plusplus": [0],
         "react/no-array-index-key": [0],
         "react/jsx-no-bind": [0],
@@ -66,10 +70,7 @@
         "react/jsx-filename-extension": [
             1,
             {
-                "extensions": [
-                    ".js",
-                    ".jsx"
-                ]
+                "extensions": [".js", ".jsx"]
             }
         ]
     }

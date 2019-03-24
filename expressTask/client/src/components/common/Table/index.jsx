@@ -4,9 +4,7 @@ import { Table as AntdTable } from 'antd';
 
 import './styles.less';
 
-const Table = props => {
-    const { data, handleRedirect, columns } = props;
-
+const Table = ({ data, handleRedirect, columns }) => {
     const onRow = row => ({
         onClick: () => handleRedirect(row.key)
     });
