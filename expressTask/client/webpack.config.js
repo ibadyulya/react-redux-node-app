@@ -1,31 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const config = require('../config');
-
-function resolve(dir) {
-    return path.join(__dirname, dir);
-}
 
 module.exports = {
     entry: {
-        app: './src/index.jsx'
+        index: ['@babel/polyfill', path.join(__dirname, 'src', 'index.jsx')]
     },
     output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'dist'),
-        publicPath:
-            process.env.NODE_ENV === 'production'
-                ? config.build.assetsPublicPath
-                : config.dev.assetsPublicPath
-    },
-    devtool: 'source-map',
-    resolve: {
-        extensions: ['.js', '.jsx', '.less', '.json'],
-        modules: [path.join(__dirname, 'src'), 'node_modules'],
-        alias: {
-            'com:': resolve('/src/components'),
-            'mod:': resolve('/src/modules')
-        }
+        path: path.join(__dirname, '/dist'),
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -66,5 +48,13 @@ module.exports = {
             }
         ]
     },
-    plugins: []
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        })
+    ],
+    resolve: {
+        modules: [path.join(__dirname, 'src'), 'node_modules'],
+        extensions: ['.js', '.jsx', '.less', '.json']
+    }
 };

@@ -10,7 +10,7 @@ module.exports = {
         productionSourceMap: false,
         productionGzip: false,
         productionGzipExtensions: ['js', 'css'],
-        bundleAnalyzerReport: process.env.npm_config_report,
+        bundleAnalyzerReport: process.env.npm_config_report
     },
     dev: {
         env: require('./dev'),
@@ -23,15 +23,15 @@ module.exports = {
                 target: 'http://localhost:3000',
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/api': '',
-                },
-            },
+                    '^/api': ''
+                }
+            }
         },
         // CSS Sourcemaps off by default because relative paths are "buggy"
         // with this option, according to the CSS-Loader README
         // (https://github.com/webpack/css-loader#sourcemaps)
         // In our experience, they generally work as expected,
         // just be aware of this issue when enabling this option.
-        cssSourceMap: false,
-    },
+        cssSourceMap: false
+    }
 };

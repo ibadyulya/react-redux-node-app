@@ -1,10 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Table from '../index.jsx';
+import Table from '../index';
 
 describe('Table functional component', () => {
     const mockedProps = {
-        data: [
+        columns: [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                key: 'name'
+            },
+            {
+                title: 'Category',
+                dataIndex: 'category',
+                key: 'category'
+            },
+            {
+                title: 'Price',
+                dataIndex: 'price',
+                key: 'price'
+            }
+        ],
+        dataSource: [
             {
                 _id: 1,
                 name: 'productName',
@@ -24,13 +41,21 @@ describe('Table functional component', () => {
                 price: '3 $'
             }
         ],
-        handleRedirect: jest.fn()
+        onRow: jest.fn()
     };
 
     const component = shallow(<Table {...mockedProps} />);
 
+    it('renders the <Table /> component', () => {
+        expect(component.exists('Table')).toBe(true);
+    });
+
     it('calls click event on clicking', () => {
         component.simulate('click');
-        expect(mockedProps.handleChange).toHaveBeenCalled();
+        expect(mockedProps.onRow).toHaveBeenCalled();
+    });
+
+    it('<Table /> component coloumns should be equal to PRODUCT_TABLE_COLUMNS length', () => {
+        expect(mockedProps.columns).toHaveLength(3);
     });
 });
