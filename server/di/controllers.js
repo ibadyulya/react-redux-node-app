@@ -1,4 +1,4 @@
-const ProductController = require('../api/controllers/product');
+import ProductController from '../api/controllers/product';
 
 module.exports = [
     {

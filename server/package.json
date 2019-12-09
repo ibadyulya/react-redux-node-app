@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set DEBUG=app,app:* & nodemon --exec babel-node server.js"
+    "start": "set DEBUG=app,app:* & nodemon --exec babel-node server.js",
+    "debug": "babel-node --inspect server.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +39,7 @@
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
+    "@babel/register": "^7.7.4",
     "babel-eslint": "^10.0.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.2.0",

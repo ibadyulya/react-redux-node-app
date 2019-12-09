@@ -7,7 +7,6 @@ import config from 'config';
 import router from './api/router';
 import registerDependencies from './di';
 
-
 const logger = Logger.init(config.get('loggerParams'));
 const app = express();
 
