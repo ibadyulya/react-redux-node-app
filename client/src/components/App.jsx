@@ -9,13 +9,13 @@ import './styles.less';
 
 const App = () => (
     <Router>
-        <div className="app">
+        <div className="main-component-container">
             <header>
                 <Header />
             </header>
-            <div className="app-body">
+            <main>
                 <Routes />
-            </div>
+            </main>
         </div>
     </Router>
 );

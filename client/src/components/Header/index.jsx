@@ -1,21 +1,10 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
-
-import logoImg from '../../img/logo/logo.png';
+import { PageHeader } from 'antd';
 
 import './styles.less';
 
-const Header = props => {
-    return (
-        <Navbar default collapseOnSelect>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    <img src={logoImg} alt="img" />
-                </Navbar.Brand>
-                <Navbar.Toggle />
-            </Navbar.Header>
-        </Navbar>
-    );
-};
+const Header = () => (
+    <PageHeader title="Express Task" subTitle="with my skills" />
+);
 
 export default Header;
