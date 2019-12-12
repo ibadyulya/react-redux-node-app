@@ -12,6 +12,7 @@ export const createProduct = entity => async dispatch => {
             ACTION_STATES.success(ACTION_TYPES.CREATE_PRODUCT_SUCCESS, resData)
         );
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         dispatch(
             ACTION_STATES.failure(ACTION_TYPES.CREATE_PRODUCT_FAILURE, error)
@@ -29,6 +30,7 @@ export const getProduct = entityID => async dispatch => {
             ACTION_STATES.success(ACTION_TYPES.GET_PRODUCT_SUCCESS, resData)
         );
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         dispatch(
             ACTION_STATES.failure(ACTION_TYPES.GET_PRODUCT_FAILURE, error)
@@ -49,6 +51,7 @@ export const getProductsList = () => async dispatch => {
             )
         );
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         dispatch(
             ACTION_STATES.failure(ACTION_TYPES.GET_PRODUCT_LIST_FAILURE, error)
@@ -66,6 +69,7 @@ export const updateProduct = entity => async dispatch => {
             ACTION_STATES.success(ACTION_TYPES.UPDATE_PRODUCT_SUCCESS, resData)
         );
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         dispatch(
             ACTION_STATES.failure(ACTION_TYPES.UPDATE_PRODUCT_FAILURE, error)
@@ -83,6 +87,7 @@ export const deleteProduct = entityID => async dispatch => {
             ACTION_STATES.success(ACTION_TYPES.DELETE_PRODUCT_SUCCESS, resData)
         );
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         dispatch(
             ACTION_STATES.failure(ACTION_TYPES.DELETE_PRODUCT_FAILURE, error)
@@ -100,6 +105,7 @@ export const filterList = value => async dispatch => {
             ACTION_STATES.success(ACTION_TYPES.FILTER_PRODUCT_SUCCESS, resData)
         );
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
         dispatch(
             ACTION_STATES.failure(ACTION_TYPES.FILTER_PRODUCT_FAILURE, error)

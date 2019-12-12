@@ -15,6 +15,24 @@ import './styles.less';
 const { Search } = Input;
 
 class ProductsList extends React.Component {
+    static propTypes = {
+        filterList: PropTypes.func.isRequired,
+        getProduct: PropTypes.func.isRequired,
+        productsList: PropTypes.arrayOf(
+            PropTypes.shape({
+                _id: PropTypes.string.isRequired,
+                category: PropTypes.string.isRequired,
+                created: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
+                price: PropTypes.string.isRequired
+            })
+        )
+    };
+
+    static defaultProps = {
+        productsList: []
+    };
+
     componentDidMount() {
         this.props.getProduct();
     }
