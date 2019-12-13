@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
+
+import PropTypes from 'prop-types';
 
 import './styles.less';
 
@@ -22,6 +23,33 @@ const Card = props => {
             {renderFields()}
         </div>
     );
+};
+
+Card.defaultProps = {
+    values: {
+        category: '',
+        data: '',
+        id: '',
+        name: '',
+        price: ''
+    }
+};
+
+Card.propTypes = {
+    values: PropTypes.shape({
+        category: PropTypes.string,
+        data: PropTypes.string,
+        id: PropTypes.string,
+        name: PropTypes.string,
+        price: PropTypes.string
+    }),
+    dictionary: PropTypes.arrayOf(
+        PropTypes.shape({
+            fieldName: PropTypes.string.isRequired,
+            value: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    title: PropTypes.string.isRequired
 };
 
 export default Card;
