@@ -3,6 +3,8 @@
 /* eslint-disable array-callback-return */
 import * as React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { Select } from 'antd';
 
 const { Option } = Select;
@@ -26,6 +28,17 @@ const OptionMenu = props => {
             {renderOptions()}
         </Select>
     );
+};
+
+OptionMenu.propTypes = {
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    value: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired
 };
 
 export default OptionMenu;
