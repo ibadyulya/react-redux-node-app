@@ -31,25 +31,29 @@ Table.defaultProps = {
         {
             dataIndex: '',
             key: '',
-            title: '',
-        },
+            title: ''
+        }
     ],
-    data: [],
+    data: []
 };
 
 Table.propTypes = {
-    columns: PropTypes.arrayOf(PropTypes.shape({
-        dataIndex: PropTypes.string.isRequired,
-        key: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-    })),
-    data: PropTypes.arrayOf(PropTypes.shape({
-        category: PropTypes.string.isRequired,
-        key: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.string.isRequired,
-    })),
-    handleRedirect: PropTypes.func.isRequired,
+    columns: PropTypes.arrayOf(
+        PropTypes.shape({
+            dataIndex: PropTypes.string.isRequired,
+            key: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired
+        })
+    ),
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            category: PropTypes.string.isRequired,
+            key: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.string.isRequired
+        })
+    ),
+    handleRedirect: PropTypes.func.isRequired
 };
 
 export default Table;
