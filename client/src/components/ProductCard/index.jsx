@@ -41,9 +41,7 @@ export default class ProductCard extends React.Component {
                 <hr />
                 <div className="buttons-block">
                     <Button type="primary">
-                        <Link to={`/edit/${match.params.number}/`}>
-                            {'Edit'}
-                        </Link>
+                        <Link to={`/edit/${match.params.number}/`}>Edit</Link>
                     </Button>
                     <Button onClick={this.handleOnClick}>Delete</Button>
                     <Button>
