@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unused-state */
-/* eslint-disable react/no-did-update-set-state */
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { Form, Input, InputNumber, Button } from 'antd';
 
@@ -21,11 +22,35 @@ const formItemLayout = {
 
 class CreateForm extends React.PureComponent {
     state = {
-        _id: null,
+        _id: '',
         name: '',
         category: 'Select type of product',
-        price: '',
-        formErrors: []
+        price: ''
+    };
+
+    static propTypes = {
+        createProduct: PropTypes.func.isRequired,
+        getProduct: PropTypes.func.isRequired,
+        updateProduct: PropTypes.func.isRequired,
+        loadingProductGet: PropTypes.string.isRequired,
+        loadingProductCreate: PropTypes.string.isRequired,
+        match: ReactRouterPropTypes.match.isRequired,
+        history: ReactRouterPropTypes.history.isRequired,
+        product: PropTypes.shape({
+            _id: PropTypes.string.isRequired,
+            category: PropTypes.string.isRequired,
+            created: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.string.isRequired
+        }),
+        form: PropTypes.shape({
+            validateFields: PropTypes.func.isRequired,
+            getFieldDecorator: PropTypes.func.isRequired
+        }).isRequired
+    };
+
+    static defaultProps = {
+        product: {}
     };
 
     componentDidMount() {
