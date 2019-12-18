@@ -1,6 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
+
 import { Button } from 'antd';
 
 import Card from '../common/Card';
@@ -10,6 +13,29 @@ import { LOADING_STATUSES, CARD_DICTIONARY } from '../../constants/index';
 import './styles.less';
 
 export default class ProductCard extends React.Component {
+    static propTypes = {
+        getProduct: PropTypes.func.isRequired,
+        deleteProduct: PropTypes.func.isRequired,
+        loadingProductDelete: PropTypes.string.isRequired,
+        match: ReactRouterPropTypes.match.isRequired,
+        history: ReactRouterPropTypes.history.isRequired,
+        product: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            category: PropTypes.string.isRequired,
+            created: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.string.isRequired
+        }),
+        form: PropTypes.shape({
+            validateFields: PropTypes.func.isRequired,
+            getFieldDecorator: PropTypes.func.isRequired
+        }).isRequired
+    };
+
+    static defaultProps = {
+        product: {}
+    };
+
     componentDidMount() {
         const { getProduct, match } = this.props;
         getProduct(match.params.number);

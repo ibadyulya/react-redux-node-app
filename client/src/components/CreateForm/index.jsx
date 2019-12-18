@@ -22,6 +22,7 @@ const formItemLayout = {
 
 class CreateForm extends React.PureComponent {
     state = {
+        // eslint-disable-next-line react/no-unused-state
         _id: '',
         name: '',
         category: 'Select type of product',
@@ -72,6 +73,7 @@ class CreateForm extends React.PureComponent {
             prevProps.loadingProductGet === LOADING_STATUSES.LOADING
         ) {
             this.setState({
+                // eslint-disable-next-line react/no-unused-state
                 _id,
                 name,
                 category,
