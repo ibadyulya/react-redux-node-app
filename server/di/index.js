@@ -1,9 +1,12 @@
 import config from 'config';
 // import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import Logger from 'noogger';
-import { createContainer, asClass, asValue } from 'awilix';
-import controllers from './controllers';
+
+import {
+    createContainer, asClass, asValue, asFunction,
+} from 'awilix';
+
+import resolvers from './resolvers';
 import services from './services';
 import DbContext from '../dal/context/db';
 import repositories from './repositories';
@@ -19,18 +22,21 @@ const convertArrayToObject = (classesArray, transform) => {
     return resultConfigObject;
 };
 
+const mapResolvers = (classesArray, transform) => (
+    classesArray.map(({ name, instance }) => (transform ? transform(instance) : instance))
+);
+
+
+
 const awilixContainer = () => {
     const container = createContainer();
     container
         .register({ logger: asValue(logger) })
-        // .register({ bcrypt: asValue(bcrypt) })
-        .register({ jwt: asValue(jwt) })
-        .register(convertArrayToObject(controllers, asClass))
         .register(convertArrayToObject(services, asClass))
         .register(convertArrayToObject(repositories, asClass))
-        .register({ controllersMap: asValue(convertArrayToObject(controllers, container.build)) })
+        .register(convertArrayToObject(resolvers, asFunction))
+        .register({ resolversMap: asValue(mapResolvers(resolvers, container.build)) })
         .register({ dbContext: asClass(DbContext).singleton() });
-
     return container;
 };
 
