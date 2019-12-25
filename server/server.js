@@ -13,13 +13,12 @@ import registerDependencies from './di';
 import schemas from './api/graphql/collector.schemas';
 
 
-// const dbContext = registerDependencies().resolve('dbContext');
-// console.log(registerDependencies().resolve('resolversMap'));
+const dbContext = registerDependencies().resolve('dbContext');
 
 const server = new ApolloServer({
     typeDefs: mergeTypes(schemas, { all: true }),
     resolvers: mergeResolvers(registerDependencies().resolve('resolversMap')),
-    // context: { db: dbContext },
+    context: { db: dbContext },
 });
 
 const app = express();
@@ -34,7 +33,7 @@ app
     .use(cors())
     .disable('x-powered-by')
     .listen(config.appSettings.port, async () => {
-        // await dbContext.establishConnection();
+        await dbContext.establishConnection();
         logger.info(`Application is listening on port ${config.appSettings.port}`);
         logger.info(`Environment: ${process.env.NODE_ENV}`);
     });
