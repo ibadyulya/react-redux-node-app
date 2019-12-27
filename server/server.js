@@ -23,7 +23,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-server.applyMiddleware({ app, path: '/api/v1/product/graphql' });
+server.applyMiddleware({ app, path: '/graphql' });
 
 const logger = Logger.init(config.get('loggerParams'));
 
